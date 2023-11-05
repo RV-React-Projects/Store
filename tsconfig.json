@@ -1,0 +1,49 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "skipDefaultLibCheck": false,
+    "paths": {
+      "@src/*": ["./src/*"],
+      "@appConfig": ["./app.json"],
+      "@config": ["./Config.json"],
+      "@assets/*": ["./src/assets/*"],
+      "@cards/*": ["./src/cards/*"],
+      "@common/*": ["./src/common/*"],
+      "@components/*": ["./src/components/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@contexts/*": ["./src/contexts/*"],
+      "@helpers/*": ["./src/helpers/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@navigation/*": ["./src/navigation/*"],
+      "@screens_components/*": ["./src/screens_components/*"],
+      "@screens/*": ["./src/screens/*"],
+      "@skeltons/*": ["./src/skeltons/*"],
+      "@services/*": ["./src/services/*"],
+      "@features/*": ["./src/services/features/*"],
+      "@global/*": ["./src/services/global/*"],
+      "@reducers/*": ["./src/redux/reducers/*"],
+      "@redux/*": ["./src/redux/*"]
+    },
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src", "**/*.ts", "**/*.tsx"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
