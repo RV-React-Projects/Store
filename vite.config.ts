@@ -12,6 +12,7 @@ export default defineConfig({
       "@assets": "/src/assets",
       "@cards": "/src/cards",
       "@common": "/src/common",
+      "@styles": "/src/styles",
       "@components": "/src/components",
       "@constants": "/src/constants",
       "@contexts": "/src/contexts",
