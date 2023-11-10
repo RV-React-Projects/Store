@@ -10,7 +10,7 @@ function shouldNotIncludeCredentials(url: string) {
 }
 
 function get(url: string, params: any, headers: any, body = {}) {
-  var isStaging = shouldNotIncludeCredentials(url);
+  // var isStaging = shouldNotIncludeCredentials(url);
   if (params && params.params) {
     url = url + "?" + Qs.stringify(params.params);
   }
@@ -37,7 +37,7 @@ function get(url: string, params: any, headers: any, body = {}) {
 }
 
 function deleteRequest(url: string, headers: any, body = {}) {
-  var isStaging = shouldNotIncludeCredentials(url);
+  // var isStaging = shouldNotIncludeCredentials(url);
 
   return new Promise((success, failure) => {
     fetch(url, {
@@ -62,7 +62,7 @@ function deleteRequest(url: string, headers: any, body = {}) {
 }
 
 function post(url: string, data: any, headers: any, body = {}) {
-  var isStaging = shouldNotIncludeCredentials(url);
+  // var isStaging = shouldNotIncludeCredentials(url);
 
   return new Promise((success, failure) => {
     axios({
@@ -91,7 +91,7 @@ function post(url: string, data: any, headers: any, body = {}) {
 }
 
 function put(url: string, params: any, headers: any, body = {}) {
-  var isStaging = shouldNotIncludeCredentials(url);
+  // var isStaging = shouldNotIncludeCredentials(url);
   return new Promise((success, failure) => {
     fetch(url, {
       method: "PUT",

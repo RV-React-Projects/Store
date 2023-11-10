@@ -1,7 +1,3 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
-
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
@@ -57,4 +53,59 @@ body {
   line-height: 1.4;
   color: var(--dark-color);
   background-color: var(--white-color);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: var(--percent100);
+  vertical-align: middle;
+}
+
+strong {
+  font-weight: var(--fw8);
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input::placeholder {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Poppins";
+}
+
+h1 {
+  font-size: calc(1.3em + 1vw);
+  font-weight: var(--fw8);
+  line-height: 1;
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+h3 {
+  font-size: 1.2em;
+  font-weight: var(--fw7);
+}
+
+h4 {
+  font-size: 1em;
+  font-weight: var(--fw6);
 }

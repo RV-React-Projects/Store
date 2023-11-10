@@ -1,9 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
+export const loadUserTheme = createAsyncThunk("user/theme", async () => {
+  var isDark = await window.matchMedia("(prefers-color-scheme: dark)").matches;
+  // isDark = await localStorage.getItem("Driver_Theme");
+  return isDark;
+});
 
 const initialState = {
   loadingTheme: false,
   isDarkMode: false,
-  // theme: lightTheme,
 };
 
 const themeSlice = createSlice({
@@ -12,11 +17,20 @@ const themeSlice = createSlice({
   reducers: {
     toggleTheme: (state, action) => {
       console.log("toggleTheme ACTION===>", action);
-      state.isDarkMode = !state.isDarkMode;
-      // state.theme = state.isDarkMode ? { ...darkTheme } : { ...lightTheme };
+      state.isDarkMode = action?.payload;
     },
   },
-  // extraReducers: (builder) => {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(loadUserTheme.pending, (state) => {
+        state.loadingTheme = true;
+      })
+      .addCase(loadUserTheme.fulfilled, (state, action) => {
+        console.log("loadUserTheme Action====>", action.payload);
+        state.loadingTheme = false;
+        state.isDarkMode = action?.payload;
+      });
+  },
 });
 
 export const { toggleTheme } = themeSlice.actions;
