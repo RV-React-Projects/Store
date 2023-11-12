@@ -15,7 +15,7 @@ const brandData = [
 
 function BrandsIcons() {
   return (
-    <div className="flex flex-row items-center justify-around padding_div mt-10 select-none flex-wrap cursor-pointer ">
+    <div className="flex flex-row items-center justify-around padding_div my-8 select-none flex-wrap cursor-pointer ">
       {_.map(brandData, (brand, index) => (
         <div
           key={index}

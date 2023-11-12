@@ -90,7 +90,7 @@ export default function HomeCarousel(props: SliderProps) {
               {SlidesData.map((slide, index) => (
                 <SwiperSlide key={index}>
                   <div className="item relative">
-                    <div className="image object-cover min-h-16 max-h-[440px]">
+                    <div className="image object-contain min-h-16 max-h-[440px]">
                       <img
                         src={slide?.image}
                         alt={"Image" + index}

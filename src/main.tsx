@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "@styles/_index.scss";
@@ -11,7 +11,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ReduxStore store={store}>
       <MaterialTailwindThemeProvider>
-        <RouterProvider router={App} />
+        <Suspense fallback={<div></div>}>
+          <RouterProvider router={App} />
+        </Suspense>
       </MaterialTailwindThemeProvider>
     </ReduxStore>
   </React.StrictMode>

@@ -1,4 +1,6 @@
-function NotFound() {
+import { memo } from "react";
+
+const NotFound = () => {
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center">
       <svg
@@ -182,6 +184,6 @@ function NotFound() {
       </div>
     </div>
   );
-}
+};
 
-export default NotFound;
+export default memo(NotFound);

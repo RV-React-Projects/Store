@@ -5,6 +5,7 @@ import SideBar from "@src/screen_components/Home/SideBar";
 import HomeCarousel from "@src/screen_components/Home/HomeCarasole";
 import CategoryDropDown from "@src/screen_components/Home/CategoryDropDown";
 import BrandsIcons from "@src/screen_components/Home/BrandsIcons";
+import TrandingProduct from "@src/screen_components/Home/TrandingProduct";
 
 export default function Home() {
   const [searchText, setSearchText] = useState<string>("");
@@ -28,6 +29,7 @@ export default function Home() {
         </div>
       </div>
       <BrandsIcons />
+      <TrandingProduct />
       {/* <SideBarTest />
       <CategoryDropDown /> */}
     </div>
