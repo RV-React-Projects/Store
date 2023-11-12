@@ -11,6 +11,8 @@ import { headerDataTypes } from "@src/common/CommonTypes";
 import { useAppDispatch, useAppSelector } from "@src/redux/store";
 import { toggleTheme } from "@src/redux/reducers/ThemeSlice";
 import { setCurrency } from "@src/redux/reducers/HeaderSlice";
+import ThemeDropDown from "../DropDown/ThemeDropDown";
+import CurrencyDropDown from "../DropDown/CurrencyDropDown";
 
 const currencyData: headerDataTypes[] = [
   { name: "USD", value: "usd" },
@@ -50,8 +52,6 @@ export default function Header() {
     useStoreDispatch(setCurrency(val));
   };
 
-
-
   return (
     <header className="header_container min-w-full select-none shadow-sm dark:bg-gray-900">
       {/* ========== Top Options ========== */}
@@ -66,25 +66,18 @@ export default function Header() {
           <Link to="/orders" className="dark:text-gray-200">
             Order Tracking
           </Link>
-          <DropDown
-            selected={currency}
-            data={currencyData}
-            onPressItem={toggleCurrency}
-          />
-
-          <DropDown
-            data={themeData}
-            onlyIcon={true}
-            onPressItem={toggleMainTheme}
-          />
+          <CurrencyDropDown selected={currency} onPressItem={toggleCurrency} />
+          <ThemeDropDown onPressItem={toggleMainTheme} />
         </div>
       </>
       {/* ========== Top Navigation ============ */}
       <div className="py-2 w-full">
         <div className="flex items-end justify-between">
           <div className="flex items-end gap-24 dark:text-gray-200">
-            <Link to="" className="flex items-end gap-">
-              <div className="h-9 w-9 rounded-full bg-deep-purple-300" />
+            <Link to="" className="flex items-end">
+              <div className="relative w-10 h-10 bg-[#f2f3f5] rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 bg-[#794afa] rounded-full bottom-5 right-5 opacity-40"></div>
+              </div>
               <h3 className="font-bold text-xl">.Store</h3>
             </Link>
             <div className=" flex gap-8">

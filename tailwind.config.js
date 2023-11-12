@@ -6,7 +6,12 @@ export default withMT({
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        light: "#f2f2f2",
+        secondary: "#3498db",
+      },
+    },
   },
   plugins: [require("daisyui")],
 });
