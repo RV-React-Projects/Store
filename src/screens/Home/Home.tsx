@@ -5,7 +5,7 @@ import SideBar from "@src/screen_components/Home/SideBar";
 import HomeCarousel from "@src/screen_components/Home/HomeCarasole";
 import CategoryDropDown from "@src/screen_components/Home/CategoryDropDown";
 import BrandsIcons from "@src/screen_components/Home/BrandsIcons";
-import TrandingProduct from "@src/screen_components/Home/TrandingProduct";
+import TrandingProduct from "@src/screen_components/Tranding/TrandingProduct";
 
 export default function Home() {
   const [searchText, setSearchText] = useState<string>("");
@@ -24,7 +24,7 @@ export default function Home() {
         <div className="relative -mt-20 lg:min-w-[300px] hidden lg:block md:hidden !flex-[0.25]">
           <SideBar />
         </div>
-        <div className="!flex-[0.8] md:flex-[1] lg:max-w-[75%] md:w-full">
+        <div className="!flex-[0.7] md:flex-[1] lg:max-w-[70%] xl:max-w-[75%] md:w-full md:m-auto">
           <HomeCarousel />
         </div>
       </div>

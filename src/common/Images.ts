@@ -18,6 +18,7 @@ import menu_bg2 from "../assets/menu/menu_bg2.jpg";
 import menu_bg3 from "../assets/menu/menu_bg3.jpg";
 import menu_bg4 from "../assets/menu/menu_bg4.jpg";
 import menu_bg5 from "../assets/menu/menu_bg5.jpg";
+import tranding from "../assets/products/apparel4.jpg";
 
 const images = {
   slider0,
@@ -40,6 +41,7 @@ const images = {
   menu_bg3,
   menu_bg4,
   menu_bg5,
+  tranding,
 };
 
 export default images;

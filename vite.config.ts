@@ -19,7 +19,7 @@ export default defineConfig({
       "@helpers": "/src/helpers",
       "@hooks": "/src/hooks",
       "@navigation": "/src/navigation",
-      "@screens_components": "/src/screens_components",
+      "@screen_components": "/src/screen_components",
       "@screens": "/src/screens",
       "@skeltons": "/src/skeltons",
       "@services": "/src/services",

@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const loadUserTheme = createAsyncThunk("user/theme", async () => {
   var isDark = await window.matchMedia("(prefers-color-scheme: dark)").matches;
-  // isDark = await localStorage.getItem("Driver_Theme");
+  await localStorage.getItem("Driver_Theme");
   return isDark;
 });
 

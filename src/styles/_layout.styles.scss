@@ -20,8 +20,11 @@
 // }
 
 .header_container {
-  width: 100%;
-  padding: 1% 10%;
+  // width: 100%;
+  // padding: 1% 10%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 0.938em;
 }
 
 Link,
