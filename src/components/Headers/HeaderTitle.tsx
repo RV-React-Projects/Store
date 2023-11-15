@@ -25,8 +25,8 @@ function HeaderTitle(props: HeaderTitleProps) {
     <div className="flex items-center justify-between pb-4 pt-1 border-b-[0.5px] mb-5 dark:border-[#333]">
       <div className="flex items-end">
         {showIcon && (
-          <div className="relative w-8 h-8 bg-[#e7efff] bg-opacity-80 rounded-full flex items-center justify-center mr-2">
-            <div className="w-6 h-6 bg-[#794afa] rounded-full bottom-5 right-5 opacity-40" />
+          <div className="relative lg:w-10 lg:h-10 h-8 w-8  bg-[#e7efff] bg-opacity-80 rounded-full flex items-center justify-center mr-2">
+            <div className="lg:w-8 lg:h-8 h-6 w-6 bg-[#794afa] rounded-full bottom-5 right-5 opacity-40" />
           </div>
         )}
         <h3 className="font-semibold md:text-xl lg:text-3xl dark:text-gray-200">
@@ -38,9 +38,9 @@ function HeaderTitle(props: HeaderTitleProps) {
           <Link
             to={goto}
             onClick={() => onPressLeftButton()}
-            className="text-blue-600 font-medium"
+            className="text-blue-600 dark:text-gray-400 dark:hover:text-gray-200 transition font-medium"
           >
-            {leftbutton} <i className="ri-arrow-right-line"></i>{" "}
+            {leftbutton} <i className="ri-arrow-right-line" />
           </Link>
         )}
       </span>

@@ -2,7 +2,7 @@ import HeaderTitle from "@src/components/Headers/HeaderTitle";
 import TrandingOffer from "./TrandingOffer";
 
 import { DataTrandingItems } from "@helpers/DataTrandingItems";
-import ItemCard from "@src/cards/ItemCard";
+import TrandingItemCard from "@src/cards/TrandingItemCard";
 
 function TrandingProduct() {
   return (
@@ -15,7 +15,7 @@ function TrandingProduct() {
         <div className="grid md:grid-cols-2 xl:gap-1 lg:gap-1 xl:ml-2 xl:mt-0 lg:max-w-[70%]">
           {DataTrandingItems.map((item, index) => (
             <div key={index} className="">
-              <ItemCard
+              <TrandingItemCard
                 URL={item?.image}
                 key={index}
                 title={item.title}

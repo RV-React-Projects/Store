@@ -1,9 +1,8 @@
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import times from "lodash/times";
 import { Tooltip } from "@mui/material";
-import images from "@src/common/Images";
 
-interface itemCardProps {
+interface TrandingItemCardProps {
   id?: string;
   title?: string;
   discount?: number;
@@ -14,7 +13,7 @@ interface itemCardProps {
   URL?: string;
 }
 
-function ItemCard(props: itemCardProps) {
+function TrandingItemCard(props: TrandingItemCardProps) {
   const {
     id,
     title,
@@ -23,15 +22,12 @@ function ItemCard(props: itemCardProps) {
     normalPrice,
     sold,
     freeShipping,
-    URL = images.procat1,
+    URL,
   } = props;
 
   return (
-    <div
-      className="rounded-lg flex flex-col text-left lg:max-w-[100%] cursor-pointer h-full group lg:p-1 p-2 bg-inherit hover:shadow-xl hover:dark:shadow-gray-800 transition-all duration-700"
-      key={id}
-    >
-      <div className="relative !overflow-hidden rounded-t-lg !min-w-[25%] group">
+    <div className="rounded-lg flex items-center lg:max-w-[100%] cursor-pointer w-full group h-fit p-3">
+      <div className="relative self-center !overflow-hidden rounded-lg !min-w-[125px] group">
         <div className="cursor-pointer bg-white rounded-full absolute z-10 right-0 mt-2 mr-2 p-1 group-hover:-translate-x-1 lg:translate-x-14 duration-300 hover:bg-primary_color hover:text-white">
           <Tooltip title="WishList" placement="right">
             <FavoriteBorderOutlinedIcon className="" />
@@ -40,8 +36,7 @@ function ItemCard(props: itemCardProps) {
         <img
           src={URL}
           alt="menu1"
-          className="h-[360px] w-full self-center object-cover transition-transform duration-500 transform-gpu hover:scale-110 "
-          // h-[160px]
+          className="h-[170px] w-[130px] self-center object-cover transition-transform duration-500 transform-gpu hover:scale-110 "
         />
         {discount && (
           <p className="p-1 absolute right-1 bottom-1 bg-gray-600 bg-opacity-70 rounded-full text-xs text-white">
@@ -49,8 +44,8 @@ function ItemCard(props: itemCardProps) {
           </p>
         )}
       </div>
-      <div className="mt-2 px-2">
-        <h5 className="font-medium text-xl hover:underline hover:text-primary dark:text-gray-200 line-clamp-2">
+      <div className="ml-4">
+        <h5 className="font-normal hover:underline hover:text-primary dark:text-gray-400 line-clamp-2">
           {title}
         </h5>
         <div className="flex items-center my-2">
@@ -65,19 +60,19 @@ function ItemCard(props: itemCardProps) {
             (2303)
           </p>
         </div>
-        <div className="flex items-end xl:gap-4 gap-2 xl:text-2xl lg:xl:text-xl sm:text-base md:text-lg mb-3">
+        <div className="flex items-end xl:gap-4 gap-2 xl:text-2xl lg:xl:text-xl sm:text-base md:text-lg">
           <p className="text-secondary font-medium">${currentPrice}</p>
           <p className="line-through text-gray-500 dark:text-gray-600 text-base">
             ${normalPrice}
           </p>
         </div>
-        {/* <div className="items-center justify-between text-gray-500 dark:text-gray-400 mt-2 font-medium text-sm">
+        <div className="items-center justify-between text-gray-500 dark:text-gray-400 mt-2 font-medium text-sm">
           <p className="">Sold: {sold}</p>
           {freeShipping && <p className="">Free Shipping</p>}
-        </div> */}
+        </div>
       </div>
     </div>
   );
 }
 
-export default ItemCard;
+export default TrandingItemCard;

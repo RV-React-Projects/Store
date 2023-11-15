@@ -1,11 +1,11 @@
 import { useState } from "react";
-import SerachBox from "@src/components/Search/SerachBox";
 import SearchBar from "@src/screen_components/Home/SearchBar";
 import SideBar from "@src/screen_components/Home/SideBar";
 import HomeCarousel from "@src/screen_components/Home/HomeCarasole";
-import CategoryDropDown from "@src/screen_components/Home/CategoryDropDown";
 import BrandsIcons from "@src/screen_components/Home/BrandsIcons";
 import TrandingProduct from "@src/screen_components/Tranding/TrandingProduct";
+import FeaturedProduct from "@src/screen_components/Home/FeaturedProduct";
+import PdoductCategories from "@src/screen_components/Home/PdoductCategories";
 
 export default function Home() {
   const [searchText, setSearchText] = useState<string>("");
@@ -19,7 +19,6 @@ export default function Home() {
         onChangeText={(val) => setSearchText(val)}
         onPressSearch={onPressSearch}
       />
-      {/* ========== Carousel and Side NAV ========= */}
       <div className="flex mt-8 w-full padding_div flex-1">
         <div className="relative -mt-20 lg:min-w-[300px] hidden lg:block md:hidden !flex-[0.25]">
           <SideBar />
@@ -30,8 +29,8 @@ export default function Home() {
       </div>
       <BrandsIcons />
       <TrandingProduct />
-      {/* <SideBarTest />
-      <CategoryDropDown /> */}
+      <FeaturedProduct />
+      <PdoductCategories />
     </div>
   );
 }
