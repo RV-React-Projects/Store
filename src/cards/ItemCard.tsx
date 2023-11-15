@@ -41,7 +41,6 @@ function ItemCard(props: itemCardProps) {
           src={URL}
           alt="menu1"
           className="h-[360px] w-full self-center object-cover transition-transform duration-500 transform-gpu hover:scale-110 "
-          // h-[160px]
         />
         {discount && (
           <p className="p-1 absolute right-1 bottom-1 bg-gray-600 bg-opacity-70 rounded-full text-xs text-white">
@@ -50,7 +49,7 @@ function ItemCard(props: itemCardProps) {
         )}
       </div>
       <div className="mt-2 px-2">
-        <h5 className="font-medium text-xl hover:underline hover:text-primary dark:text-gray-200 line-clamp-2">
+        <h5 className="font-medium text-base hover:underline hover:text-primary dark:text-gray-400 line-clamp-2">
           {title}
         </h5>
         <div className="flex items-center my-2">

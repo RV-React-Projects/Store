@@ -1,19 +1,19 @@
 import { DataProductCategories } from "@src/helpers/DataProductCategories";
-import { map } from "lodash";
+import map from "lodash/map";
 import React from "react";
 import { Link } from "react-router-dom";
 
 function PdoductCategories() {
   return (
     <div className="padding_div group">
-      <div className="grid grid-cols-3 gap-2 p-2 overflow-hidden">
+      <div className="grid xl:grid-cols-3 md:grid-cols-2  gap-2 p-2 overflow-hidden">
         {map(DataProductCategories, (item, index) => (
           <div
             key={index}
-            className="flex border border-gray-400 dark:border-gray-100 rounded-md"
+            className="flex border border-gray-400 dark:border-gray-600 rounded-md"
           >
             <img
-              className="h-fit max-w-[160px] object-cover m-1"
+              className="h-fit max-w-[160px] object-cover m-1 bg-blend-darken"
               src={item?.imageSrc}
             />
             <div className="ml-4 flex flex-col justify-around">

@@ -10,7 +10,7 @@ function SearchBar(props: SearchBarTypes) {
   const { value, onChangeText, onPressSearch } = props;
 
   return (
-    <div className="bg-[#f0eaff] dark:bg-[#342a4d] w-full hidden lg:block">
+    <div className="bg-[#f0eaff] dark:bg-dark_color w-full hidden lg:block">
       <div className="padding_div  !py-6 flex items-center justify-end">
         <div className="relative flex w-2/4 ">
           <>
@@ -42,7 +42,7 @@ function SearchBar(props: SearchBarTypes) {
           </>
           <button
             type="submit"
-            className="text-white right-2.5 bottom-2.5 bg-blue-700 focus:outline-none font-medium rounded-e-lg text-sm px-4 py-2 dark:bg-blue-600 hover:bg-black !w-24"
+            className="text-white right-2.5 bottom-2.5 bg-blue-700 focus:outline-none font-medium rounded-e-lg text-sm px-4 py-2 dark:bg-primary_color hover:bg-black dark:hover:bg-primary transition-all duration-500 !w-28"
             onClick={onPressSearch}
           >
             Search

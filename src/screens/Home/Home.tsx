@@ -34,5 +34,3 @@ export default function Home() {
     </div>
   );
 }
-
-// lg:w-3/4 md:w-fit
