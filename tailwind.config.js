@@ -1,9 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 
 const withMT = require("@material-tailwind/react/utils/withMT");
+import keepPreset from "keep-react/src/keep-preset.js";
 
 export default withMT({
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "node_modules/keep-react/**/*.{js,jsx,ts,tsx}",
+  ],
   darkMode: "class",
   theme: {
     extend: {
@@ -25,4 +30,5 @@ export default withMT({
     },
   },
   plugins: [require("daisyui")],
+  presets: [keepPreset],
 });

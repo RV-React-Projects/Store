@@ -4,9 +4,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function PdoductCategories() {
+  const scrolltoTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className="padding_div group">
-      <div className="grid xl:grid-cols-3 md:grid-cols-2  gap-2 p-2 overflow-hidden">
+      <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-2 overflow-hidden">
         {map(DataProductCategories, (item, index) => (
           <div
             key={index}
@@ -23,9 +31,10 @@ function PdoductCategories() {
               <div className="flex flex-col text-blue-gray-600 transition-all duration-300 gap-1">
                 {map(item?.subcategories, (subcategory, index) => (
                   <Link
-                    to=""
+                    to={`/category/${subcategory}`}
+                    onClick={scrolltoTop}
                     key={index}
-                    className="dark:text-gray-400 hover:text-primary dark:hover:text-gray-200 transition-all duration-300 "
+                    className="dark:text-gray-400 hover:text-primary dark:hover:text-gray-100 transition-all duration-300 "
                   >
                     {subcategory}
                   </Link>
@@ -33,7 +42,7 @@ function PdoductCategories() {
               </div>
               <Link
                 to={item?.viewAllLink}
-                className="dark:text-gray-50 dark:hover:text-blue-600 hover:text-blue-600"
+                className="dark:text-gray-50 dark:hover:text-white hover:text-blue-600 transition-all duration-300"
               >
                 View All
                 <i className="ri-arrow-right-line ml-2" />

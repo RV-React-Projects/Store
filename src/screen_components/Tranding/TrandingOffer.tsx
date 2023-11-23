@@ -2,11 +2,13 @@ import images from "@src/common/Images";
 import CountdownTimer from "@screen_components/Common/CountdownTimer";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import times from "lodash/times";
-import { Slider, Tooltip } from "@mui/material";
+import { Tooltip } from "@mui/material";
 
 interface TrandingOfferProps {}
 
-function TrandingOffer() {
+function TrandingOffer(props: TrandingOfferProps) {
+  const {} = props;
+
   return (
     <div className="border border-gray-800 rounded-lg py-2 px-5 flex items-center max-w-[400px] cursor-pointer group w-[100%]">
       <div className="flex flex-col">
@@ -44,13 +46,10 @@ function TrandingOffer() {
           <p className="font-medium">Stock: 107</p>
           <p className="font-medium">Sold: 3,459</p>
         </div>
-        <Slider
-          min={10}
-          max={110}
-          disableSwap={true}
-          value={70}
-          unselectable="off"
-          contentEditable={false}
+        <progress
+          className="progress progress-primary w-full my-3"
+          value="70"
+          max="100"
         />
       </div>
     </div>

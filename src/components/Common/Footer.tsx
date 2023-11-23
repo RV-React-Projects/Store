@@ -1,4 +1,5 @@
 import NewsLater from "@src/screen_components/Footer/NewsLater";
+import MainLogo from "@src/screen_components/Header/MainLogo";
 import map from "lodash/map";
 import { Link } from "react-router-dom";
 
@@ -80,12 +81,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="flex flex-col items-center bg-white py-10 dark:bg-dark_color">
-        <Link to="" className="flex items-end my-5">
-          <div className="relative w-10 h-10 bg-[#f2f3f5] rounded-full flex items-center justify-center">
-            <div className="w-8 h-8 bg-[#794afa] rounded-full bottom-5 right-5 opacity-40" />
-          </div>
-          <h3 className="font-bold text-2xl">.Store</h3>
-        </Link>
+        <MainLogo />
         <div className="flex flex-row gap-1 mb-8">
           <i className="ri-twitter-line text-3xl h-12 w-12 rounded-full bg-black bg-opacity-5 p-2 transition-all duration-300 hover:text-light-blue-500"></i>
           <i className="ri-facebook-line text-3xl h-12 w-12 rounded-full bg-black bg-opacity-10 p-2 transition-all duration-300 hover:text-blue-700"></i>
