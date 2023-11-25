@@ -55,7 +55,7 @@ const currentYear = new Date().getFullYear();
 
 export default function Footer() {
   return (
-    <footer className="relative w-full shadow-inner dark:text-gray-200 dark:bg-gray-900 bg-gray-100">
+    <footer className="relative w-full shadow-inner dark:text-gray-200 dark:bg-gray-900 bg-gray-50">
       <NewsLater />
       <div className="mx-auto w-full max-w-7xl px-8">
         <div className="mx-auto grid w-full grid-cols-1 gap-8 py-12 md:grid-cols-2 lg:grid-cols-4">
@@ -82,12 +82,12 @@ export default function Footer() {
       </div>
       <div className="flex flex-col items-center bg-white py-10 dark:bg-dark_color">
         <MainLogo />
-        <div className="flex flex-row gap-1 mb-8">
-          <i className="ri-twitter-line text-3xl h-12 w-12 rounded-full bg-black bg-opacity-5 p-2 transition-all duration-300 hover:text-light-blue-500"></i>
-          <i className="ri-facebook-line text-3xl h-12 w-12 rounded-full bg-black bg-opacity-10 p-2 transition-all duration-300 hover:text-blue-700"></i>
-          <i className="ri-instagram-line text-3xl h-12 w-12 rounded-full bg-black bg-opacity-10 p-2 transition-all duration-300 hover:text-purple-500"></i>
-          <i className="ri-linkedin-line text-3xl h-12 w-12 rounded-full bg-black bg-opacity-10 p-2 transition-all duration-300 hover:text-blue-600"></i>
-          <i className="ri-youtube-line text-3xl h-12 w-12 rounded-full bg-black bg-opacity-10 p-2 transition-all duration-300 hover:text-red-500"></i>
+        <div className="flex flex-row gap-1 p-2 mb-8">
+          <i className="ri-twitter-line text-3xl h-12 w-12 rounded-full bg-black bg-opacity-5 p-2 flex items-center justify-center transition-all duration-300 hover:text-light-blue-500"></i>
+          <i className="ri-facebook-line text-3xl h-12 w-12 rounded-full bg-black bg-opacity-10 p-2 flex items-center justify-center transition-all duration-300 hover:text-blue-700"></i>
+          <i className="ri-instagram-line text-3xl h-12 w-12 rounded-full bg-black bg-opacity-10 p-2 flex items-center justify-center transition-all duration-300 hover:text-purple-500"></i>
+          <i className="ri-linkedin-line text-3xl h-12 w-12 rounded-full bg-black bg-opacity-10 p-2 flex items-center justify-center transition-all duration-300 hover:text-blue-600"></i>
+          <i className="ri-youtube-line text-3xl h-12 w-12 rounded-full bg-black bg-opacity-10 p-2 flex items-center justify-center transition-all duration-300 hover:text-red-500"></i>
         </div>
         <p className="mb-4 text-center font-medium text-blue-gray-900 md:mb-0 dark:text-gray-200">
           &copy; {currentYear}{" "}

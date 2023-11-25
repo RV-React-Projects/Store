@@ -1,5 +1,6 @@
-import _ from "lodash";
-import React, { useState } from "react";
+import map from "lodash/map";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const categoriesData = [
   {
@@ -123,81 +124,26 @@ const categoriesData = [
   },
 ];
 
-interface SubcategoryListProps {
-  items: string[];
-}
-
-const SubcategoryList: React.FC<SubcategoryListProps> = ({ items }) => (
-  <ul className="ml-4">
-    {items.map((item, index) => (
-      <li key={index}>
-        <a href="#" className="text-gray-600 hover:text-gray-800">
-          {item}
-        </a>
-      </li>
-    ))}
-  </ul>
-);
-
 interface Subcategory {
   name: string;
   items: string[];
 }
 
-interface CategoryItemProps {
-  name?: string;
-  icon?: string;
-  subcategories?: string[];
-  categorysubcategories?: string[] | Subcategory[];
-}
-
-const CategoryItem = (props: CategoryItemProps) => {
-  const { name = "", icon, subcategories, categorysubcategories } = props;
-  return (
-    <li className={`has-child ${name.toLowerCase()}`}>
-      <a href="#">
-        <div className="icon-larger">
-          <i className={`ri-${icon}`} />
-        </div>
-        {name}
-        {categorysubcategories && categorysubcategories?.length > 0 && (
-          <div className="icon-small">
-            <i className="ri arrow-right-s-line"></i>
-          </div>
-        )}
-      </a>
-      {/* {subcategories && <SubcategoryList items={subcategories[0]?.items} />} */}
-    </li>
-  );
-};
-
-interface SubcategoryItemProps {
-  name: string;
-}
-
-// interface CategoryItemProps {
-//   name: string;
-//   icon: string;
-//   subcategories?: (string | { name: string; items: string[] })[];
-// }
-
-const SubcategoryItem: React.FC<SubcategoryItemProps> = ({ name }) => (
-  <li>
-    <a href="#">{name}</a>
-  </li>
-);
-
 export default function SideBar() {
-  const [showSubCatgories, setShowSubCatgories] = useState<boolean>(false);
+  const [subCatgories, setSubCatgories] = useState<
+    string[] | Subcategory[] | undefined | null
+  >(null);
   const [isHovered, setIsHovered] = useState<boolean>(false);
-  const [itemIndex, setitemIndex] = useState<number | null>(0);
+  const [itemIndex, setitemIndex] = useState<number>(0);
 
-  // console.log("showSubCatgories=", showSubCatgories);
-  console.log(
-    "showSubCatgories=",
-    isHovered,
-    itemIndex && categoriesData[Number(itemIndex)]?.subcategories
-  );
+  // console.log("subCatgories==>", subCatgories, itemIndex);
+
+  useEffect(() => {
+    const subcategories = categoriesData[itemIndex]?.subcategories;
+    if (subcategories) {
+      setSubCatgories(subcategories);
+    } else setSubCatgories(null);
+  }, [itemIndex]);
 
   return (
     <div className="dpt-menu pr-5">
@@ -212,24 +158,16 @@ export default function SideBar() {
             onMouseEnter={() => {
               setIsHovered(true);
             }}
-            onMouseLeave={() => {
-              setIsHovered(false);
-              setitemIndex(null);
-            }}
+            onMouseLeave={() => setIsHovered(false)}
           >
-            {_.map(categoriesData, (category, index) => (
+            {map(categoriesData, (category, index) => (
               <li
                 key={index}
                 onMouseEnter={() => {
-                  category?.subcategories &&
-                    category?.subcategories?.length > 0 &&
-                    setIsHovered(true);
+                  setIsHovered(true);
                   setitemIndex(index);
                 }}
-                onMouseLeave={() => {
-                  setIsHovered(false);
-                  setitemIndex(null);
-                }}
+                onMouseLeave={() => setIsHovered(false)}
                 className={`relative ${
                   isHovered ? "text-blue-500" : "text-gray-800"
                 }`}
@@ -241,52 +179,76 @@ export default function SideBar() {
                   <i className={category?.icon} />
                   <p className="text-sm font-medium">{category?.name}</p>
                 </div>
-                <span
-                  className={`${
-                    isHovered ? "opacity-100 block z-10" : "opacity-0 hidden"
-                  } absolute z-10 -right-48 top-0 items-center justify-start text-start min-w-[200px]`}
-                >
-                  {isHovered &&
-                    itemIndex &&
-                    categoriesData[itemIndex]?.subcategories?.map(
-                      (subcategory, index) =>
-                        typeof subcategory === "string" ? (
-                          <div key={index} className="bg-gray-300">
-                            {subcategory}
-                          </div>
-                        ) : (
-                          <span key={index}>
-                            <a href="#" className="font-semibold">
-                              {subcategory.name}
-                            </a>
-                            {subcategory.items && (
-                              <ul>
-                                {subcategory.items.map((item, itemIndex) => (
-                                  <SubcategoryItem
-                                    key={itemIndex}
-                                    name={item}
-                                  />
-                                ))}
-                              </ul>
-                            )}
-                          </span>
-                        )
-                    )}
-                </span>
               </li>
             ))}
+            <div
+              className={`${
+                isHovered && !!subCatgories
+                  ? "opacity-100 block z-10"
+                  : "opacity-0 hidden"
+              } absolute z-10 -right-48 top-0 min-w-[200px] max-h-[100%] bg-blue-gray-50 p-4 rounded-md dark:bg-gray-900 dark:text-gray-200 ${
+                subCatgories &&
+                subCatgories.length > 0 &&
+                subCatgories.every(
+                  (subcategory) =>
+                    typeof subcategory === "object" &&
+                    subcategory !== null &&
+                    "name" in subcategory
+                )
+                  ? "-right-[29rem] top-10 text-start flex flex-col flex-wrap items-start" // Show the container
+                  : ""
+              }`}
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              {isHovered &&
+                subCatgories &&
+                subCatgories.length > 0 &&
+                subCatgories.map((subcategory, index) => {
+                  if (typeof subcategory === "string") {
+                    return (
+                      <div key={index} className="mb-1">
+                        <Link
+                          to={`category/${subcategory}`}
+                          className="font-medium hover:text-blue-500 hover:scale-150 transition-all duration-200"
+                        >
+                          {subcategory}
+                        </Link>
+                      </div>
+                    );
+                  } else if (
+                    typeof subcategory === "object" &&
+                    subcategory !== null &&
+                    "name" in subcategory
+                  ) {
+                    return (
+                      <div key={index} className="m-3">
+                        <span className="">
+                          <p className="font-semibold mb-2 text-blue-700 dark:text-gray-50">
+                            {subcategory.name}
+                          </p>
+                          <ul className="list-none">
+                            {subcategory.items.map((item, index) => (
+                              <div key={index}>
+                                <Link
+                                  to=""
+                                  className="font-medium hover:text-blue-500 hover:scale-150 transition-all duration-200"
+                                >
+                                  {item}
+                                </Link>
+                              </div>
+                            ))}
+                          </ul>
+                        </span>
+                      </div>
+                    );
+                  }
+                  return null; // Return null for unsupported types
+                })}
+            </div>
           </ul>
         </div>
       </div>
     </div>
   );
 }
-
-// <div>Heloo</div>
-// <CategoryItem
-//   key={index}
-//   name={category?.name}
-//   icon={category?.icon}
-//   // subcategories={category?.subcategories}
-//   categorysubcategories={category?.subcategories}
-// />

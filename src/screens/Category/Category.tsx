@@ -8,6 +8,7 @@ import ItemCard from "@src/cards/ItemCard";
 import PdoductCategories from "@src/screen_components/Home/PdoductCategories";
 import BreadCrumb from "@src/components/BreadrCrumbs/BreadCrumb";
 import { useParams } from "react-router-dom";
+import RangeSlider from "@src/components/Slider/RangeSlider";
 
 function Category() {
   const [searchText, setSearchText] = useState<string>("");
@@ -75,6 +76,7 @@ function Category() {
                     ))}
                   </div>
                 ))}
+                <RangeSlider />
               </div>
             </div>
             {/* Right Section */}

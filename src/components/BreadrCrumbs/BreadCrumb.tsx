@@ -11,7 +11,7 @@ interface BreadCrumbProps {
 function BreadCrumb(props: BreadCrumbProps) {
   const { data } = props;
   return (
-    <div className="text-sm breadcrumbs my-2 px-4 text-white select-none border border-blue-200 rounded-md flex flex-row items-center w-fit ">
+    <div className="breadcrumbs my-2 px-4 dark:text-white text-gray-600 select-none border border-blue-200 rounded-md flex flex-row items-center w-fit ">
       <ul>
         <li>
           <Link to="/">

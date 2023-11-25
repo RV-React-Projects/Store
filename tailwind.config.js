@@ -8,6 +8,7 @@ export default withMT({
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
     "node_modules/keep-react/**/*.{js,jsx,ts,tsx}",
+    "node_modules/preline/dist/*.js",
   ],
   darkMode: "class",
   theme: {
@@ -29,6 +30,10 @@ export default withMT({
       },
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [
+    require("daisyui"),
+    require("preline/plugin"),
+    // require("@tailwindcss/forms"),
+  ],
   presets: [keepPreset],
 });
