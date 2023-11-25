@@ -32,7 +32,7 @@ export default withMT({
   },
   plugins: [
     require("daisyui"),
-    require("preline/plugin"),
+    // require("preline/plugin"),
     // require("@tailwindcss/forms"),
   ],
   presets: [keepPreset],
