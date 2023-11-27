@@ -20,7 +20,7 @@ export default function Home() {
         onPressSearch={onPressSearch}
       />
       <div className="flex mt-8 w-full padding_div flex-1">
-        <div className="relative -mt-20 lg:min-w-[300px] hidden lg:block md:hidden !flex-[0.25]">
+        <div className="relative z-10 -mt-20 lg:min-w-[300px] hidden lg:block md:hidden !flex-[0.25]">
           <SideBar />
         </div>
         <div className="!flex-[0.7] md:flex-[1] lg:max-w-[70%] xl:max-w-[75%] md:w-full md:m-auto">
