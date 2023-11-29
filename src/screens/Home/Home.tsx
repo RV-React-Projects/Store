@@ -5,7 +5,7 @@ import HomeCarousel from "@src/screen_components/Home/HomeCarasole";
 import BrandsIcons from "@src/screen_components/Home/BrandsIcons";
 import TrandingProduct from "@src/screen_components/Tranding/TrandingProduct";
 import FeaturedProduct from "@src/screen_components/Home/FeaturedProduct";
-import PdoductCategories from "@src/screen_components/Home/PdoductCategories";
+import ProductCategories from "@src/screen_components/Home/ProductCategories";
 
 export default function Home() {
   const [searchText, setSearchText] = useState<string>("");
@@ -30,7 +30,7 @@ export default function Home() {
       <BrandsIcons />
       <TrandingProduct />
       <FeaturedProduct />
-      <PdoductCategories />
+      <ProductCategories />
     </div>
   );
 }

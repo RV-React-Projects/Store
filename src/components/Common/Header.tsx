@@ -14,10 +14,6 @@ import { Popover, Transition } from "@headlessui/react";
 import { navigationData } from "@src/screen_components/Header/HeaderCategory";
 import { toLower } from "lodash";
 
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(" ");
-}
-
 export default function Header() {
   const useStoreDispatch = useAppDispatch();
   const { currency } = useAppSelector((state) => state.header);

@@ -5,7 +5,7 @@ import { CategoryData } from "@src/helpers/DataCategories";
 import { capitalize, map } from "lodash";
 import { DataTrandingItems } from "@src/helpers/DataTrandingItems";
 import ItemCard from "@src/cards/ItemCard";
-import PdoductCategories from "@src/screen_components/Home/PdoductCategories";
+import ProductCategories from "@src/screen_components/Home/ProductCategories";
 import BreadCrumb from "@src/components/BreadrCrumbs/BreadCrumb";
 import { useParams } from "react-router-dom";
 import RangeSlider from "@src/components/Slider/RangeSlider";
@@ -100,7 +100,7 @@ function Category() {
               </div>
             </div>
           </div>
-          <PdoductCategories />
+          <ProductCategories />
         </div>
       </div>
     </div>

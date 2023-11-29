@@ -3,7 +3,7 @@ import map from "lodash/map";
 import React from "react";
 import { Link } from "react-router-dom";
 
-function PdoductCategories() {
+function ProductCategories() {
   const scrolltoTop = () => {
     window.scrollTo({
       top: 0,
@@ -14,7 +14,7 @@ function PdoductCategories() {
 
   return (
     <div className="padding_div group">
-      <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-2 overflow-hidden">
+      <div className="grid xl:grid-cols-3 md:grid-cols-2 gap-2 overflow-hidden mb-5">
         {map(DataProductCategories, (item, index) => (
           <div
             key={index}
@@ -55,4 +55,4 @@ function PdoductCategories() {
   );
 }
 
-export default PdoductCategories;
+export default ProductCategories;

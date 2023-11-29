@@ -1,6 +1,9 @@
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import times from "lodash/times";
-import { Tooltip } from "@mui/material";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { Button, NumberInput } from "keep-react";
+import { Tooltip } from "@material-tailwind/react/components/Tooltip";
+import { useState } from "react";
 
 interface TrandingItemCardProps {
   id?: string;
@@ -11,11 +14,13 @@ interface TrandingItemCardProps {
   sold?: number;
   freeShipping?: boolean;
   URL?: string;
+  count: number;
+  onAddToCart: (id: string) => void;
 }
 
 function TrandingItemCard(props: TrandingItemCardProps) {
   const {
-    id,
+    id = "",
     title,
     discount,
     currentPrice,
@@ -23,13 +28,17 @@ function TrandingItemCard(props: TrandingItemCardProps) {
     sold,
     freeShipping,
     URL,
+    count = 0,
+    onAddToCart,
   } = props;
 
+  const [itemCount, setItemCount] = useState(count);
+
   return (
-    <div className="rounded-lg flex items-center lg:max-w-[100%] cursor-pointer w-full group h-fit p-3">
+    <div className="rounded-lg flex items-center lg:max-w-[100%] cursor-pointer group h-fit p-3 relative hover:shadow-gray-500 hover:shadow transition-all duration-700 ease-linear">
       <div className="relative self-center !overflow-hidden rounded-lg !min-w-[125px] group">
         <div className="cursor-pointer bg-white rounded-full absolute z-10 right-0 mt-2 mr-2 p-1 group-hover:-translate-x-1 lg:translate-x-14 duration-300 hover:bg-primary_color hover:text-white">
-          <Tooltip title="WishList" placement="right">
+          <Tooltip content="WishList" placement="right">
             <FavoriteBorderOutlinedIcon className="" />
           </Tooltip>
         </div>
@@ -44,8 +53,8 @@ function TrandingItemCard(props: TrandingItemCardProps) {
           </p>
         )}
       </div>
-      <div className="ml-4">
-        <h5 className="font-normal hover:underline hover:text-primary dark:text-gray-400 line-clamp-2">
+      <div className="ml-4 z-0">
+        <h5 className="font-normal hover:underline hover:text-primary dark:text-gray-400 line-clamp-2 h-12">
           {title}
         </h5>
         <div className="flex items-center my-2">
@@ -66,11 +75,43 @@ function TrandingItemCard(props: TrandingItemCardProps) {
             ${normalPrice}
           </p>
         </div>
-        <div className="items-center justify-between text-gray-500 dark:text-gray-400 mt-2 font-medium text-sm">
-          <p className="">Sold: {sold}</p>
-          {freeShipping && <p className="">Free Shipping</p>}
+        <div className="flex flex-wrap flex-row items-end justify-between">
+          <div className="text-gray-500 dark:text-gray-400 mt-2 font-medium text-sm">
+            <p className="">Sold: {sold}</p>
+            {freeShipping && <p className="">Free Shipping</p>}
+          </div>
         </div>
       </div>
+      {itemCount > 0 ? (
+        <div className="absolute dark:text-white right-2 bottom-2">
+          <NumberInput
+            style={{
+              backgroundColor: "transparent",
+              color: "inherit",
+            }}
+            sizing="sm"
+            value={itemCount}
+            setValue={setItemCount}
+          />
+        </div>
+      ) : (
+        <div className="absolute group bottom-3 right-2 overflow-hidden z-10">
+          <Tooltip content="Add to Cart" placement="right">
+            <Button
+              onClick={() => {
+                onAddToCart && onAddToCart(id);
+                setItemCount(itemCount + 1);
+              }}
+              className="cursor-pointer group-hover:-translate-x-1 lg:translate-x-14 duration-300 bg-black dark:bg-primary z-10"
+              size="sm"
+              type="primary"
+              circle={true}
+            >
+              <AddShoppingCartIcon className="text-white" fontSize="medium" />
+            </Button>
+          </Tooltip>
+        </div>
+      )}
     </div>
   );
 }

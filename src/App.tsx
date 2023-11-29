@@ -6,12 +6,13 @@ import {
 } from "react-router-dom";
 
 // ======== Components + Routes ========
-const Home = lazy(() => import("@screens/Home/Home"));
-const Category = lazy(() => import("@screens/Category/Category"));
+const Layout = lazy(() => import("@src/screens/Layout"));
 const NotFound = lazy(() => import("@screens/NotFound"));
 const SignUp = lazy(() => import("@screens/Auth/SignUp"));
 const Login = lazy(() => import("@screens/Auth/Login"));
-const Layout = lazy(() => import("@src/screens/Layout"));
+const Home = lazy(() => import("@screens/Home/Home"));
+const Category = lazy(() => import("@screens/Category/Category"));
+const Cart = lazy(() => import("@src/screens/Cart/Cart"));
 // ======================================
 
 const App = createBrowserRouter(
@@ -19,6 +20,7 @@ const App = createBrowserRouter(
     <Route path="/" element={<Layout />} errorElement={<NotFound />}>
       <Route index path="" element={<Home />} />
       <Route path="/category" element={<Category />} />
+      <Route path="/cart" element={<Cart />} />
       <Route path="/category/:catType" element={<Category />} />
       <Route path="auth">
         <Route index path="login" element={<Login />} />
