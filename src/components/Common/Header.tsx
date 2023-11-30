@@ -13,6 +13,7 @@ import { Fragment, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { navigationData } from "@src/screen_components/Header/HeaderCategory";
 import { toLower } from "lodash";
+import FloatingCart from "@src/screens/Cart/FloatingCart";
 
 export default function Header() {
   const useStoreDispatch = useAppDispatch();
@@ -282,18 +283,25 @@ export default function Header() {
                     </div>
                     <FavoriteBorderOutlinedIcon className="text-gray-600 dark:text-gray-200" />
                   </NavLink>
-                  <NavLink to="/cart" end className="flex relative items-end">
-                    <div className="relative">
-                      <div className="h-5 w-5 rounded-full bg-primary absolute -top-3 -right-2 flex items-center justify-center text-sm text-white">
-                        <span>5</span>
+                  <div className="group relative">
+                    <NavLink to="/cart" end className="flex relative items-end">
+                      <div className="relative">
+                        <div className="h-5 w-5 rounded-full bg-primary absolute -top-3 -right-2 flex items-center justify-center text-sm text-white">
+                          <span>5</span>
+                        </div>
+                        <ShoppingCartOutlinedIcon className="text-gray-600 dark:text-gray-200" />
                       </div>
-                      <ShoppingCartOutlinedIcon className="text-gray-600 dark:text-gray-200" />
+                      <div className="ml-5 text-center">
+                        <p className="text-sm font-normal text-gray-400">
+                          Total
+                        </p>
+                        <p className="text-base font-bold">$ 3437</p>
+                      </div>
+                    </NavLink>
+                    <div className="hidden absolute opacity-0 right-0 transition-all duration-500 group-hover:opacity-100 group-hover:block">
+                      <FloatingCart />
                     </div>
-                    <div className="ml-5 text-center">
-                      <p className="text-sm font-normal text-gray-400">Total</p>
-                      <p className="text-base font-bold">$ 3437</p>
-                    </div>
-                  </NavLink>
+                  </div>
                 </div>
               </div>
             </div>

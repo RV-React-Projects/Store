@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "@styles/_home.styles.scss";
 import SearchBar from "@src/screen_components/Home/SearchBar";
 import SideBar from "@src/screen_components/Home/SideBar";
 import HomeCarousel from "@src/screen_components/Home/HomeCarasole";

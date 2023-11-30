@@ -8,11 +8,13 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import ThemeReducer from "./reducers/ThemeSlice";
 import HeaderReducer from "./reducers/HeaderSlice";
 import UserReducer from "./reducers/UsersSlice";
+import CartReducer from "./reducers/CartSlice";
 
 export const rootReducer = combineReducers({
   theme: ThemeReducer,
   header: HeaderReducer,
   user: UserReducer,
+  cart: CartReducer,
 });
 
 const store = configureStore({

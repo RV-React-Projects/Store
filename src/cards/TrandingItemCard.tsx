@@ -14,8 +14,8 @@ interface TrandingItemCardProps {
   sold?: number;
   freeShipping?: boolean;
   URL?: string;
-  count: number;
-  onAddToCart: (id: string) => void;
+  count?: number;
+  onAddToCart?: (id: string) => void;
 }
 
 function TrandingItemCard(props: TrandingItemCardProps) {
