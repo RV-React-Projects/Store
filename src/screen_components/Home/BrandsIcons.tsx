@@ -1,6 +1,5 @@
 import images from "@src/common/Images";
 import _ from "lodash";
-import React from "react";
 
 const brandData = [
   images.zara,
@@ -10,8 +9,6 @@ const brandData = [
   images.hurley,
   images.dng,
 ];
-
-// dark:bg-[#f6f3ff]
 
 function BrandsIcons() {
   return (

@@ -19,6 +19,25 @@
   box-sizing: border-box;
 }
 
+body {
+  scrollbar-width: none;
+  scrollbar-color: #4f46e5 #cbd5e0;
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #4f46e5;
+  height: 10px;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
 :root {
   --primary-color: #ff6b6b;
   --secondary-color: #794afa;

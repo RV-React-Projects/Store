@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { NumberInput } from "keep-react";
 
 interface CartItemCardProps {
-  id?: string;
+  id?: string | undefined;
   url?: string;
   title?: string;
   currentPrice?: number;
@@ -12,12 +12,12 @@ interface CartItemCardProps {
   onDelete?: (id: string) => void;
 }
 
-function CartItemCard(props: CartItemCardProps) {
+function FloatingCartItem(props: CartItemCardProps) {
   const { id = "", url, title, currentPrice, onDelete, count = 0 } = props;
   const [itemCount, setItemCount] = useState(count);
   return (
     <div>
-      <div className="m-1 flex hover:shadow rounded-md p-2 hover:dark:shadow-gray-500 transition-all duration-500 ease-in-out border-b-[0.1px]">
+      <div className="m-1 flex hover:shadow rounded-md p-2 hover:dark:shadow-gray-500 transition-all duration-500 ease-in-out border-gray-200 dark:border-gray-600 border-[0.5px]">
         <img src={url} alt={url} className="w-20 rounded-md" />
         <div className="flex ml-2 w-full">
           <div className="flex w-full flex-col justify-between">
@@ -53,4 +53,4 @@ function CartItemCard(props: CartItemCardProps) {
   );
 }
 
-export default CartItemCard;
+export default memo(FloatingCartItem);

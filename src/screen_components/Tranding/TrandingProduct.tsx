@@ -3,6 +3,7 @@ import TrandingOffer from "./TrandingOffer";
 
 import { DataTrandingItems } from "@helpers/DataTrandingItems";
 import TrandingItemCard from "@src/cards/TrandingItemCard";
+import TrandingItemCardV2 from "@src/cards/TrandingItemCardV2";
 
 function TrandingProduct() {
   return (
@@ -12,10 +13,10 @@ function TrandingProduct() {
         <div className="lg:max-w-[30%] md:flex md:self-center md:justify-center">
           <TrandingOffer />
         </div>
-        <div className="grid md:grid-cols-2 xl:gap-1 lg:gap-1 xl:ml-2 xl:mt-0 lg:max-w-[70%]">
+        <div className="grid md:grid-cols-2 lg:gap-1 xl:ml-2 lg:max-w-[70%]">
           {DataTrandingItems.map((item, index) => (
             <div key={index} className="">
-              <TrandingItemCard
+              <TrandingItemCardV2
                 URL={item?.image}
                 key={index}
                 title={item.title}

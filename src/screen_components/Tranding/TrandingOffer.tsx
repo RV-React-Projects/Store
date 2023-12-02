@@ -13,7 +13,7 @@ function TrandingOffer(props: TrandingOfferProps) {
     <div className="border border-gray-800 rounded-lg py-2 px-5 flex items-center max-w-[400px] cursor-pointer group w-[100%]">
       <div className="flex flex-col">
         <div className="mb-5 self-center">
-          <p className="text-center font-medium text-lg mb-2 dark:text-gray-200">
+          <p className="text-center font-medium text-xl mb-2 dark:text-gray-200">
             OFF ENDS AT
           </p>
           <CountdownTimer />

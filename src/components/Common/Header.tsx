@@ -13,7 +13,7 @@ import { Fragment, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { navigationData } from "@src/screen_components/Header/HeaderCategory";
 import { toLower } from "lodash";
-import FloatingCart from "@src/screens/Cart/FloatingCart";
+import FloatingCart from "@src/components/Cart/FloatingCart";
 
 export default function Header() {
   const useStoreDispatch = useAppDispatch();
@@ -21,6 +21,7 @@ export default function Header() {
   const { isDarkMode } = useAppSelector((state) => state.theme);
 
   const [openPopover, setOpenPopover] = useState(null);
+  const [showCart, setShowCart] = useState<boolean>(false);
 
   const handlePopoverEnter = (category: any) => {
     setOpenPopover(category);
@@ -276,7 +277,12 @@ export default function Header() {
                     </NavLink>
                   </div>
                 </div>
-                <div className="flex gap-5 items-end dark:text-gray-200">
+                <div
+                  className="flex gap-5 items-end dark:text-gray-200"
+                  onMouseEnter={() => setShowCart(true)}
+                  onMouseLeave={() => setShowCart(false)}
+                  onClick={() => setShowCart(!showCart)}
+                >
                   <NavLink to="/wishlist" className="relative">
                     <div className="h-5 w-5 rounded-full bg-primary absolute -top-3 -right-2 flex items-center justify-center text-sm text-white">
                       <span>5</span>
@@ -298,9 +304,13 @@ export default function Header() {
                         <p className="text-base font-bold">$ 3437</p>
                       </div>
                     </NavLink>
-                    <div className="hidden absolute opacity-0 right-0 transition-all duration-500 group-hover:opacity-100 group-hover:block">
-                      <FloatingCart />
-                    </div>
+                    {showCart && (
+                      <div className="hidden absolute opacity-0 right-0 transition-all duration-500 group-hover:opacity-100 group-hover:block">
+                        <FloatingCart
+                          toggleShowCart={() => setShowCart(!showCart)}
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
