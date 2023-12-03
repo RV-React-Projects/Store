@@ -16,6 +16,7 @@ interface itemCardProps {
   freeShipping?: boolean;
   URL?: string;
   count?: number;
+  starCount?: number;
   onAddToCart?: (id: string) => void;
 }
 
@@ -30,6 +31,7 @@ function ItemCard(props: itemCardProps) {
     freeShipping,
     URL = images.procat1,
     count = 0,
+    starCount = 3,
     onAddToCart,
   } = props;
 
@@ -63,10 +65,17 @@ function ItemCard(props: itemCardProps) {
         </h5>
         <div className="flex items-center my-2">
           {times(5, (index) => (
-            <i
+            <svg
               key={index}
-              className="ri-star-fill text-[#FFBC02] lg:text-xs xl:text-lg"
-            />
+              className={`w-5 h-5 fill-current ${
+                starCount > index
+                  ? "text-gray-700 dark:text-gray-500"
+                  : "text-gray-500 dark:text-gray-700"
+              }  `}
+              viewBox="0 0 24 24"
+            >
+              <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z" />
+            </svg>
           ))}
           <p className="ml-3 dark:text-gray-400 items-center lg:text-xs xl:text-base">
             {" "}

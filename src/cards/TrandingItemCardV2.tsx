@@ -38,7 +38,7 @@ function TrandingItemCardV2(props: TrandingItemCardProps) {
   const [itemCount, setItemCount] = useState(count);
 
   return (
-    <div className="h-[98%] flex w-full bg-white dark:bg-gray-900 hover:dark:shadow-gray-500 hover:shadow-lg rounded-lg overflow-hidden cursor-pointer group transition-shadow duration-700 ease-in">
+    <div className="h-[98%] flex w-full bg-white dark:bg-gray-900 hover:dark:shadow-gray-800 hover:shadow-lg rounded-lg overflow-hidden cursor-pointer group transition-shadow duration-700 ease-in">
       <img
         className="w-[30%] h-auto bg-cover transition-transform duration-500 transform-gpu hover:scale-110 overflow-hidden"
         src={URL}

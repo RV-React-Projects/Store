@@ -277,12 +277,7 @@ export default function Header() {
                     </NavLink>
                   </div>
                 </div>
-                <div
-                  className="flex gap-5 items-end dark:text-gray-200"
-                  onMouseEnter={() => setShowCart(true)}
-                  onMouseLeave={() => setShowCart(false)}
-                  onClick={() => setShowCart(!showCart)}
-                >
+                <div className="flex gap-5 items-end dark:text-gray-200">
                   <NavLink to="/wishlist" className="relative">
                     <div className="h-5 w-5 rounded-full bg-primary absolute -top-3 -right-2 flex items-center justify-center text-sm text-white">
                       <span>5</span>
@@ -290,7 +285,14 @@ export default function Header() {
                     <FavoriteBorderOutlinedIcon className="text-gray-600 dark:text-gray-200" />
                   </NavLink>
                   <div className="group relative">
-                    <NavLink to="/cart" end className="flex relative items-end">
+                    <NavLink
+                      to="/cart"
+                      end
+                      className="flex relative items-end"
+                      onMouseEnter={() => setShowCart(true)}
+                      onMouseLeave={() => setShowCart(false)}
+                      onClick={() => setShowCart(!showCart)}
+                    >
                       <div className="relative">
                         <div className="h-5 w-5 rounded-full bg-primary absolute -top-3 -right-2 flex items-center justify-center text-sm text-white">
                           <span>5</span>
@@ -305,7 +307,11 @@ export default function Header() {
                       </div>
                     </NavLink>
                     {showCart && (
-                      <div className="hidden absolute opacity-0 right-0 transition-all duration-500 group-hover:opacity-100 group-hover:block">
+                      <div
+                        className="hidden absolute opacity-0 right-0 transition-all duration-500 group-hover:opacity-100 group-hover:block"
+                        onMouseEnter={() => setShowCart(true)}
+                        onMouseLeave={() => setShowCart(false)}
+                      >
                         <FloatingCart
                           toggleShowCart={() => setShowCart(!showCart)}
                         />

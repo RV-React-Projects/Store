@@ -60,12 +60,12 @@ function FloatingCart(props: FlotingCartProps) {
   }
 
   return (
-    <div className="h-full w-full bg-white dark:bg-gray-800 p-2 mt-0 min-h-[85vh] min-w-[400px] shadow-2xl rounded-md">
+    <div className="h-full w-full bg-white dark:bg-dark_color mt-0 min-h-[85vh] min-w-[400px] shadow-2xl rounded-md">
       <div className="h-full w-full overflow-auto">
         {!cart ? (
           <div className="relative flex flex-col h-[88vh]">
             <h3 className="text-center my-4">Cart</h3>
-            <div className="flex-1 overflow-auto cart-scrollbar">
+            <div className="flex-1 overflow-auto cart-scrollbar p-2">
               <div className="max-h-[80vh]">
                 {map(cartItems, (item, index) => (
                   <FloatingCartItem
@@ -79,7 +79,7 @@ function FloatingCart(props: FlotingCartProps) {
                 ))}
               </div>
             </div>
-            <div className="bg-white dark:bg-gray-800 p-4">
+            <div className="bg-white dark:bg-dark_color p-4">
               <h6>SubTotal :</h6>
               <h3 className="text-3xl font-bold">$ 5000</h3>
               <Button
