@@ -2,28 +2,24 @@ import { memo, useEffect, useState } from "react";
 import { useAppSelector } from "@src/redux/store";
 import EmptyCartSVG from "@src/assets/svgs/EmptyCart";
 import BreadCrumb from "@src/components/BreadrCrumbs/BreadCrumb";
-import _, { map } from "lodash";
-import Button from "@material-tailwind/react/components/Button";
+import _ from "lodash";
 import { useNavigate } from "react-router-dom";
-import CartItem from "@src/cards/CartItem";
 import {
   Accordion,
   AccordionHeader,
   AccordionBody,
-  Radio,
-  List,
-  ListItem,
-  ListItemPrefix,
-  Typography,
   Card,
+  CardHeader,
+  CardBody,
+  Input,
+  Button,
+  Typography,
 } from "@material-tailwind/react";
+
+import { CreditCardIcon, LockClosedIcon } from "@heroicons/react/24/solid";
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-
-import home1 from "@assets/products/home1.jpg";
-import home2 from "@assets/products/home2.jpg";
-import CreditCardForm from "@src/screen_components/CheckOut/PaymentCard";
 
 const breadcrumbData = [
   { name: "Cart", path: "/cart" },
@@ -65,6 +61,36 @@ interface iconProps {
   open?: number;
 }
 
+function formatCardNumber(value: string) {
+  const val = value.replace(/[^0-9]/gi, "");
+
+  if (/^\d+$/.test(val)) {
+    const matches = val.match(/\d{4,16}/g);
+    const match = (matches && matches[0]) || "";
+    const parts = [];
+
+    for (let i = 0, len = match.length; i < len; i += 4) {
+      parts.push(match.substring(i, i + 4));
+    }
+
+    if (parts.length) return parts.join(" ");
+    else return val;
+  } else return "";
+}
+
+function formatExpires(value: string) {
+  return value
+    .replace(/[^0-9]/g, "")
+    .replace(/^([2-9])$/g, "0$1")
+    .replace(/^(1{1})([3-9]{1})$/g, "0$1/$2")
+    .replace(/^0{1,}/g, "0")
+    .replace(/^([0-1]{1}[0-9]{1})([0-9]{1,2}).*/g, "$1/$2");
+}
+
+function formatCVV(value: string) {
+  return value.replace(/[^0-9]/g, "");
+}
+
 function Icon(props: iconProps) {
   const { id, open } = props;
   return (
@@ -93,6 +119,11 @@ function ChackOut() {
   const [addressID, setAddressID] = useState<string | null>(null);
   const [selectedAddress, setSelectedAddress] = useState<any>(null);
   const [open, setOpen] = useState<number>(1);
+
+  const [cardEmail, setCardEmail] = useState<string>("");
+  const [cardNumber, setCardNumber] = useState<string>("");
+  const [cardExpires, setCardExpires] = useState<string>("");
+  const [cvv, setCvv] = useState<string>("");
 
   const navigate = useNavigate();
 
@@ -129,7 +160,7 @@ function ChackOut() {
                 <Accordion
                   open={open === 1}
                   icon={<Icon id={1} open={open} />}
-                  className="rounded-lg border border-blue-gray-100 px-4 mb-2"
+                  className="rounded-lg border border-blue-gray-100 px-4 mb-4 shadow-md dark:shadow-gray-600"
                 >
                   <AccordionHeader
                     onClick={() => handleOpen(1)}
@@ -143,11 +174,13 @@ function ChackOut() {
                   </AccordionHeader>
                   <AccordionBody className="pt-0 text-base font-normal">
                     <div className="w-full flex flex-row flex-wrap gap-3 p-1">
-                      {map(userAddresses, (address, index) => (
+                      {_.map(userAddresses, (address, index) => (
                         <div
                           key={index}
                           className={`relative overflow-hidden p-4 shadow dark:shadow-gray-100 rounded-lg hover:shadow-md hover:shadow-gray-400 dark:hover:shadow-gray-300 transition-shadow duration-300 ease-linear w-full lg:w-[32%] min-w-[250px] border-4 border-transparent select-none group ${
-                            address?.id === addressID ? "border-primary" : ""
+                            address?.id === addressID
+                              ? "border-primary shadow-none hover:shadow-none"
+                              : ""
                           } `}
                         >
                           <div className="absolute z-10 right-1 top-1 group-hover:-translate-y-1 lg:-translate-y-10 duration-300">
@@ -155,7 +188,7 @@ function ChackOut() {
                               aria-label="edit"
                               onClick={() => onDeleteAddress(address?.id)}
                             >
-                              <EditIcon className="text-gray" />
+                              <EditIcon className="text-gray dark:text-gray-100" />
                             </IconButton>
                             <IconButton
                               aria-label="delete"
@@ -171,23 +204,23 @@ function ChackOut() {
                             }}
                           >
                             <div className="dark:text-gray-500">
-                              <h4 className="dark:text-gray-100">
+                              <h4 className="dark:text-gray-100 text-gray-900">
                                 {address?.type}
                               </h4>
                               <p className="line-clamp-3">
-                                <i className="ri-map-pin-2-fill text-info dark:text-gray-200" />{" "}
+                                <i className="ri-map-pin-2-fill text-gray-900 dark:text-gray-200" />{" "}
                                 {address?.address}
                               </p>
                               <p className="line-clamp-1">
-                                <i className="ri-user-fill text-info dark:text-gray-200" />{" "}
+                                <i className="ri-user-fill text-gray-900 dark:text-gray-200" />{" "}
                                 {address?.name}
                               </p>
                               <p className="line-clamp-1">
-                                <i className="ri-mail-fill text-info dark:text-gray-200" />{" "}
+                                <i className="ri-mail-fill text-gray-900 dark:text-gray-200" />{" "}
                                 {address?.email}
                               </p>
                               <p className="line-clamp-1">
-                                <i className="ri-phone-fill text-info dark:text-gray-200" />{" "}
+                                <i className="ri-phone-fill text-gray-900 dark:text-gray-200" />{" "}
                                 {address?.phone}
                               </p>
                             </div>
@@ -210,12 +243,12 @@ function ChackOut() {
                 <Accordion
                   open={open === 2}
                   icon={<Icon id={2} open={open} />}
-                  className="mb-2 rounded-lg border border-blue-gray-100 px-4"
+                  className="rounded-lg border border-blue-gray-100 shadow-md dark:shadow-gray-600"
                   disabled={!addressID}
                 >
                   <AccordionHeader
                     onClick={() => handleOpen(2)}
-                    className={`border-b-0 transition-colors dark:text-gray-400  ${
+                    className={`border-b-0 transition-colors dark:text-gray-400 px-4 ${
                       open === 2
                         ? "text-blue-500  hover:text-blue-700 dark:hover:text-white"
                         : ""
@@ -223,11 +256,168 @@ function ChackOut() {
                   >
                     2. Payment Details *
                   </AccordionHeader>
-                  <AccordionBody className="pt-0 text-base font-normal">
-                    We&apos;re not always in the position that we want to be at.
-                    We&apos;re constantly growing. We&apos;re constantly making
-                    mistakes. We&apos;re constantly trying to express ourselves
-                    and actualize our dreams.
+                  <AccordionBody className="pt-0 text-base font-normal p-0 m-0">
+                    <Card className="w-full bg-transparent">
+                      <CardHeader
+                        floated={false}
+                        shadow={false}
+                        className="grid place-items-center lg:py-10 p-6 text-center bg-gray-900 m-2 mx-4 shadow-md dark:shadow-gray-800"
+                      >
+                        <div className="mb-0 p-6 text-white">
+                          <CreditCardIcon className="h-24 w-h-24 text-white " />
+                        </div>
+                        <Typography
+                          variant="h5"
+                          className="text-white text-2xl font-medium"
+                        >
+                          Payment Card Details
+                        </Typography>
+                      </CardHeader>
+                      <CardBody>
+                        <div className="!overflow-x-hidden !overflow-y-visible">
+                          <div className="p-0">
+                            <form className="mt-2 flex flex-col gap-4">
+                              <div>
+                                <Typography
+                                  variant="small"
+                                  className="mb-2 font-medium dark:text-gray-400"
+                                >
+                                  Your Email{" "}
+                                  <span className="text-error">*</span>
+                                </Typography>
+                                <Input
+                                  inputMode="email"
+                                  value={cardEmail}
+                                  onChange={(e) => setCardEmail(e.target.value)}
+                                  type="email"
+                                  placeholder="name@mail.com"
+                                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900 dark:focus:!border-primary dark:text-white text-lg"
+                                  labelProps={{
+                                    className:
+                                      "before:content-none after:content-none",
+                                  }}
+                                  crossOrigin={undefined}
+                                />
+                              </div>
+                              <div className="my-3">
+                                <Typography
+                                  variant="small"
+                                  className="mb-2 font-medium dark:text-gray-400"
+                                >
+                                  Card Details{" "}
+                                  <span className="text-error">*</span>
+                                </Typography>
+                                <Input
+                                  inputMode="numeric"
+                                  maxLength={19}
+                                  value={formatCardNumber(cardNumber)}
+                                  onChange={(e) =>
+                                    setCardNumber(e.target.value)
+                                  }
+                                  icon={
+                                    <CreditCardIcon className="absolute left-0 h-4 w-4 text-blue-gray-300" />
+                                  }
+                                  placeholder="0000 0000 0000 0000"
+                                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900 dark:focus:!border-primary dark:text-white"
+                                  labelProps={{
+                                    className:
+                                      "before:content-none after:content-none",
+                                  }}
+                                  crossOrigin={undefined}
+                                />
+                                <div className="my-4 flex items-center gap-4 flex-1">
+                                  <div className="flex-1">
+                                    <Typography
+                                      variant="small"
+                                      className="mb-2 font-medium dark:text-gray-400"
+                                    >
+                                      Expires{" "}
+                                      <span className="text-error">*</span>
+                                    </Typography>
+                                    <Input
+                                      inputMode="numeric"
+                                      maxLength={5}
+                                      value={formatExpires(cardExpires)}
+                                      onChange={(event) =>
+                                        setCardExpires(event.target.value)
+                                      }
+                                      containerProps={{
+                                        className: "min-w-[72px]",
+                                      }}
+                                      placeholder="00/00"
+                                      className=" !border-t-blue-gray-200 focus:!border-t-gray-900 dark:focus:!border-primary dark:text-white "
+                                      labelProps={{
+                                        className:
+                                          "before:content-none after:content-none",
+                                      }}
+                                      crossOrigin={undefined}
+                                    />
+                                  </div>
+                                  <div>
+                                    <Typography
+                                      variant="small"
+                                      color="blue-gray"
+                                      className="mb-2 font-medium dark:text-gray-400"
+                                    >
+                                      CVC <span className="text-error">*</span>
+                                    </Typography>
+                                    <Input
+                                      inputMode="numeric"
+                                      value={formatCVV(cvv)}
+                                      onChange={(e) => setCvv(e.target.value)}
+                                      maxLength={3}
+                                      containerProps={{
+                                        className: "min-w-[72px]",
+                                      }}
+                                      placeholder="000"
+                                      className="!border-t-blue-gray-200 focus:!border-t-gray-900 dark:focus:!border-primary dark:text-white"
+                                      labelProps={{
+                                        className:
+                                          "before:content-none after:content-none",
+                                      }}
+                                      crossOrigin={undefined}
+                                    />
+                                  </div>
+                                </div>
+                                <Typography
+                                  variant="small"
+                                  className="mb-2 font-medium dark:text-gray-400"
+                                >
+                                  Holder Name{" "}
+                                  <span className="text-error">*</span>
+                                </Typography>
+                                <Input
+                                  inputMode="text"
+                                  placeholder="Name on the Card"
+                                  className=" !border-t-blue-gray-200 focus:!border-t-gray-900 dark:focus:!border-primary dark:text-white"
+                                  labelProps={{
+                                    className:
+                                      "before:content-none after:content-none",
+                                  }}
+                                  crossOrigin={undefined}
+                                />
+                              </div>
+                              <Button
+                                variant="gradient"
+                                color="amber"
+                                size="lg"
+                                className="rounded-full"
+                              >
+                                Pay Now
+                              </Button>
+                              <Typography
+                                variant="small"
+                                color="gray"
+                                className="mt-2 flex items-center justify-center gap-2 font-medium opacity-60 dark:text-gray-300"
+                              >
+                                <LockClosedIcon className="-mt-0.5 h-4 w-4" />{" "}
+                                Payments are secure and encrypted
+                              </Typography>
+                            </form>
+                          </div>
+                        </div>
+                      </CardBody>
+                    </Card>
                   </AccordionBody>
                 </Accordion>
               </>

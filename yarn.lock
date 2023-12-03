@@ -3548,6 +3548,11 @@ react-content-loader@^6.2.1:
   resolved "https://registry.yarnpkg.com/react-content-loader/-/react-content-loader-6.2.1.tgz#8feb733c2d2495002e1b216f13707f2b5f2a8ead"
   integrity sha512-6ONbFX+Hi3SHuP66JB8CPvJn372pj+qwltJV0J8z/8MFrq98I1cbFdZuhDWeQXu3CFxiiDTXJn7DFxx2ZvrO7g==
 
+react-country-region-selector@^3.6.1:
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/react-country-region-selector/-/react-country-region-selector-3.6.1.tgz#07010051bfff0fbf92e32d1e6952b8cb20932013"
+  integrity sha512-/hKRVFVxhsQKV6/csajd9uX4Lz6XHMVNtpKhMn/xGQtZDZrnsr+VeeeeXDooSn5cV0DFAk2eKk9c+otj7Hop9w==
+
 react-datepicker@^4.16.0:
   version "4.23.0"
   resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-4.23.0.tgz#0da50b3815b3350b7df6cf0dbc63e37c6c3079b4"
@@ -4450,6 +4455,11 @@ uri-js@^4.2.2:
   integrity sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
   dependencies:
     punycode "^2.1.0"
+
+use-react-countries@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/use-react-countries/-/use-react-countries-1.1.0.tgz#59bd7966c9d8a5305861292be72134c8cceb322b"
+  integrity sha512-RjBW+D+Sf0jsMTVul/HBRIs0cOsWvDYo1fQPa+Ob9z7+/or70WL0Nf4IeiGHuhyX+ob/wbVCbwLuaq4xY79rtg==
 
 use-sync-external-store@^1.0.0:
   version "1.2.0"
