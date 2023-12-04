@@ -17,7 +17,7 @@ interface SliderProps {
 
 // ==== Images ======
 
-const SlidesData = [
+export const SlidesData = [
   {
     image: images.slider0,
     category: "Shoes Fashion",

@@ -69,7 +69,7 @@ function ItemCard(props: itemCardProps) {
               key={index}
               className={`w-5 h-5 fill-current ${
                 starCount > index
-                  ? "text-gray-700 dark:text-gray-500"
+                  ? "text-primary dark:text-gray-500"
                   : "text-gray-500 dark:text-gray-700"
               }  `}
               viewBox="0 0 24 24"
