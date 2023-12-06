@@ -1,9 +1,8 @@
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import times from "lodash/times";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { NumberInput } from "keep-react";
-import Tooltip from "@material-tailwind/react/components/Tooltip";
 import { memo, useState } from "react";
+import Tooltip from "@material-tailwind/react/components/Tooltip";
 import Button from "@material-tailwind/react/components/Button";
 
 interface TrandingItemCardProps {
@@ -56,7 +55,7 @@ function TrandingItemCardV2(props: TrandingItemCardProps) {
         )}
       </div>
       <div className="w-2/3 pl-4 py-2 flex flex-col justify-between">
-        <h1 className="text-gray-900 font-semibold text-lg hover:underline hover:text-primary dark:text-gray-400 line-clamp-1 xl:line-clamp-2 h-8 xl:h-14">
+        <h1 className="text-gray-900 font-semibold text-base hover:underline hover:text-primary dark:text-gray-400 line-clamp-1 md:line-clamp-2 h-6 md:h-12">
           {title}
         </h1>
         <div>
@@ -82,7 +81,7 @@ function TrandingItemCardV2(props: TrandingItemCardProps) {
         </div>
 
         <div className="flex flex-row justify-between">
-          <h1 className="text-gray-900 font-bold text-xl dark:text-gray-300">
+          <h1 className="text-gray-800 font-semibold text-xl dark:text-gray-300">
             ${currentPrice}
           </h1>
           {itemCount > 0 ? (

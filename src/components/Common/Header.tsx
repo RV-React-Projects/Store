@@ -1,5 +1,5 @@
 import "@styles/_layout.styles.scss";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useAppDispatch, useAppSelector } from "@src/redux/store";
@@ -12,11 +12,38 @@ import MainLogo from "@src/screen_components/Header/MainLogo";
 import { Fragment, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { navigationData } from "@src/screen_components/Header/HeaderCategory";
-import { toLower } from "lodash";
+import toLower from "lodash/toLower";
+import map from "lodash/map";
 import FloatingCart from "@src/components/Cart/FloatingCart";
+import { categoriesData } from "@src/screen_components/Home/SideBar";
+import Svgs from "@src/common/Svgs";
+
+const SideBarNavList = [
+  {
+    title: "Home",
+    path: "/",
+  },
+  {
+    title: "Shop",
+    path: "/category/shop",
+  },
+  {
+    title: "Women",
+    path: "/category/women",
+  },
+  {
+    title: "Men",
+    path: "/category/men",
+  },
+  {
+    title: "Sports",
+    path: "/category/sports",
+  },
+];
 
 export default function Header() {
   const useStoreDispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { currency } = useAppSelector((state) => state.header);
   const { isDarkMode } = useAppSelector((state) => state.theme);
 
@@ -48,6 +75,12 @@ export default function Header() {
     }
   };
 
+  const switchTheme = () => {
+    console.log("ISDARK--> switch", isDarkMode);
+
+    useStoreDispatch(toggleTheme(!isDarkMode));
+  };
+
   const toggleCurrency = (val: string) => {
     useStoreDispatch(setCurrency(val));
   };
@@ -63,6 +96,140 @@ export default function Header() {
         zIndex: 100,
       }}
     >
+      <div className="navbar dark:bg-base-100 dark:text-gray-200 lg:hidden visible drawer shadow-md">
+        <div className="navbar-start">
+          <div className="drawer">
+            <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-content">
+              {/* Page content here */}
+              <label htmlFor="my-drawer" className="drawer-button">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h16M4 18h7"
+                    />
+                  </svg>
+                </div>
+              </label>
+            </div>
+            <div className="drawer-side scroll-pt-20 scroll-smooth z-20">
+              <label
+                htmlFor="my-drawer"
+                aria-label="close sidebar"
+                className="drawer-overlay"
+              ></label>
+
+              <ul className="menu min-h-full w-60 dark:bg-base-100 p-4 min-w-[50%] bg-white">
+                <div className="self-center my-8">
+                  <MainLogo />
+                </div>
+                <div className="self-end mr-5">
+                  <label className="swap swap-rotate">
+                    <input
+                      type="checkbox"
+                      className="theme-controller"
+                      value="synthwave"
+                      onClick={() => switchTheme()}
+                    />
+                    <Svgs.Sun className="swap-on fill-current w-8 h-8" />
+                    <Svgs.Moon className="swap-off fill-current w-8 h-8" />
+                  </label>
+                </div>
+                {map(categoriesData, (category, index) => (
+                  <li key={index}>
+                    <label
+                      htmlFor="my-drawer"
+                      aria-label="close sidebar"
+                      className="flex items-center p-2 pl-4 text-gray-700 dark:text-gray-500 dark:hover:text-gray-300 hover:text-gray-900 transition-colors duration-300 ease-in-out cursor-pointer"
+                      key={index}
+                      onClick={() => navigate(`category/${category?.name}`)}
+                    >
+                      <i className={category?.icon} />
+                      <p className="text-sm font-medium">{category?.name}</p>
+                    </label>
+                  </li>
+                ))}
+                <hr className="my-5" />
+                {map(SideBarNavList, (item, index) => (
+                  <li key={index}>
+                    <label
+                      htmlFor="my-drawer"
+                      aria-label="close sidebar"
+                      className="flex items-center p-2 pl-4 text-gray-700 dark:text-gray-500 dark:hover:text-gray-300 hover:text-gray-900 transition-colors duration-300 ease-in-out cursor-pointer focus:outline-none"
+                      onClick={() => navigate(item?.path)}
+                    >
+                      {item?.title}
+                    </label>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <MainLogo />
+        <div className="navbar-end">
+          <button className="btn btn-ghost btn-circle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </button>
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 rounded-full">
+                <img
+                  alt="Tailwind CSS Navbar component"
+                  src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                />
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <a className="justify-between">
+                  Profile
+                  <span className="badge">New</span>
+                </a>
+              </li>
+              <li>
+                <a>Settings</a>
+              </li>
+              <li>
+                <a>Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <div className="min-w-full select-none shadow-sm dark:shadow-gray-800 dark:bg-gray-900">
         <header className="padding_div hidden lg:block dark:shadow-gray-800">
           {/* ========== Top Options ========== */}
@@ -314,6 +481,7 @@ export default function Header() {
                       >
                         <FloatingCart
                           toggleShowCart={() => setShowCart(!showCart)}
+                          show={showCart}
                         />
                       </div>
                     )}

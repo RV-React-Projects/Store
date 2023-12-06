@@ -80,9 +80,9 @@ function Category() {
               </div>
             </div>
             {/* Right Section */}
-            <div className="flex-[0.75] overflow-y-auto">
+            <div className="flex-1 lg:flex-[0.75] overflow-y-auto">
               <BreadCrumb data={breadcrumbData} />
-              <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-3">
+              <div className="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 gap-2">
                 {DataTrandingItems.map((item, index) => (
                   <div key={index} className="">
                     <ItemCard

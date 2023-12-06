@@ -124,6 +124,11 @@ function ChackOut() {
   const [cardNumber, setCardNumber] = useState<string>("");
   const [cardExpires, setCardExpires] = useState<string>("");
   const [cvv, setCvv] = useState<string>("");
+  const [showAccessModal, setShowAccessModal] = useState(false);
+
+  const onClickAccessModal = () => {
+    setShowAccessModal(!showAccessModal);
+  };
 
   const navigate = useNavigate();
 
@@ -177,22 +182,35 @@ function ChackOut() {
                       {_.map(userAddresses, (address, index) => (
                         <div
                           key={index}
-                          className={`relative overflow-hidden p-4 shadow dark:shadow-gray-100 rounded-lg hover:shadow-md hover:shadow-gray-400 dark:hover:shadow-gray-300 transition-shadow duration-300 ease-linear w-full lg:w-[32%] min-w-[250px] border-4 border-transparent select-none group ${
+                          className={`relative overflow-hidden rounded-lg hover:shadow-md shadow hover:shadow-gray-400 dark:shadow-gray-700 dark:hover:shadow-gray-600 transition-shadow duration-300 ease-in-out w-full lg:w-[32%] min-w-[250px] select-none group ${
                             address?.id === addressID
                               ? "border-primary shadow-none hover:shadow-none"
                               : ""
                           } `}
                         >
+                          <span
+                            className={`absolute inset-x-0 bottom-0 h-2 w-full ${
+                              address?.id === addressID
+                                ? "bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"
+                                : ""
+                            }  `}
+                          />
                           <div className="absolute z-10 right-1 top-1 group-hover:-translate-y-1 lg:-translate-y-10 duration-300">
                             <IconButton
                               aria-label="edit"
-                              onClick={() => onDeleteAddress(address?.id)}
+                              onClick={() => {
+                                onDeleteAddress(address?.id);
+                                onClickAccessModal();
+                              }}
                             >
                               <EditIcon className="text-gray dark:text-gray-100" />
                             </IconButton>
                             <IconButton
                               aria-label="delete"
-                              onClick={() => onEditAddress(address?.id)}
+                              onClick={() => {
+                                onEditAddress(address?.id);
+                                onClickAccessModal();
+                              }}
                             >
                               <DeleteIcon className="text-red-400" />
                             </IconButton>
@@ -202,6 +220,7 @@ function ChackOut() {
                               setAddressID(address?.id);
                               handleOpen(2);
                             }}
+                            className="p-3"
                           >
                             <div className="dark:text-gray-500">
                               <h4 className="dark:text-gray-100 text-gray-900">

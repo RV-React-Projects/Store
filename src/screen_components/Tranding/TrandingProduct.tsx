@@ -10,7 +10,7 @@ function TrandingProduct() {
     <div className="padding_div">
       <HeaderTitle title="Tranding Products" />
       <div className="lg:flex md:block mt-4 w-full">
-        <div className="lg:max-w-[30%] md:flex md:self-center md:justify-center">
+        <div className="lg:max-w-[30%] flex self-center justify-center pb-10 lg:pb-0">
           <TrandingOffer />
         </div>
         <div className="grid md:grid-cols-2 lg:gap-1 xl:ml-2 lg:max-w-[70%]">

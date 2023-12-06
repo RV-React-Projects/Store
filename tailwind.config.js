@@ -10,6 +10,7 @@ export default withMT({
     "node_modules/keep-react/**/*.{js,jsx,ts,tsx}",
     "node_modules/preline/dist/*.js",
   ],
+  presets: [keepPreset],
   darkMode: "class",
   theme: {
     extend: {
@@ -35,5 +36,4 @@ export default withMT({
     require("preline/plugin"),
     // require("@tailwindcss/forms"),
   ],
-  presets: [keepPreset],
 });

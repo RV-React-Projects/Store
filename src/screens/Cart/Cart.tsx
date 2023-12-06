@@ -61,7 +61,7 @@ function CartPage() {
             Shopping Cart
           </h2>
           <div className="mx-auto max-w-full justify-center md:flex md:space-x-3 xl:px-0 flex-1">
-            <div className="flex[0.7] grid gap-1">
+            <div className="flex-1 grid gap-1">
               {map(cartItems, (item, index) => (
                 <CartItem
                   key={index}

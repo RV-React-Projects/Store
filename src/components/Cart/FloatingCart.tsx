@@ -42,11 +42,12 @@ const cartItems = [
 
 interface FlotingCartProps {
   toggleShowCart?: () => void;
+  show?: boolean;
 }
 
 function FloatingCart(props: FlotingCartProps) {
   const { cart } = useAppSelector((state) => state.cart);
-  const { toggleShowCart } = props;
+  const { toggleShowCart, show } = props;
   const navigate = useNavigate();
 
   function gotoCheckout() {
@@ -60,7 +61,7 @@ function FloatingCart(props: FlotingCartProps) {
   }
 
   return (
-    <div className="h-full w-full bg-white dark:bg-dark_color mt-0 min-h-[85vh] min-w-[400px] shadow-2xl rounded-md">
+    <div className="h-full w-full bg-white dark:bg-dark_color mt-0 min-h-[85vh] min-w-[400px] shadow-2xl rounded-md ">
       <div className="h-full w-full overflow-auto">
         {!cart ? (
           <div className="relative flex flex-col h-[88vh]">

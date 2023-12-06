@@ -2,7 +2,7 @@ import map from "lodash/map";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const categoriesData = [
+export const categoriesData = [
   {
     name: "Beauty",
     icon: "ri-bear-smile-line",
