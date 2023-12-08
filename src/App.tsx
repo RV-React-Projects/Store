@@ -14,14 +14,16 @@ const Home = lazy(() => import("@screens/Home/Home"));
 const Category = lazy(() => import("@screens/Category/Category"));
 const Cart = lazy(() => import("@src/screens/Cart/Cart"));
 const Checkout = lazy(() => import("@src/screens/Cart/Checkout"));
+const Details = lazy(() => import("@src/screens/Details/ProductDetails"));
 // ======================================
 
 const App = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />} errorElement={<NotFound />}>
       <Route index path="" element={<Home />} />
-      <Route path="/category" element={<Category />} />
-      <Route path="/category/:catType" element={<Category />} />
+      <Route path="category" element={<Category />} />
+      <Route path="category/:catType" element={<Category />} />
+      <Route path="product/:id" element={<Details />} />
       <Route path="cart">
         <Route path="" element={<Cart />} />
         <Route path="checkout" element={<Checkout />} />

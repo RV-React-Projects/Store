@@ -152,7 +152,7 @@ function ChackOut() {
   const handleOpen = (value: number) => setOpen(open === value ? 0 : value);
 
   return (
-    <div className="dark:bg-gray-900  min-h-screen">
+    <div className="dark:bg-gray-900  min-h-screen pb-20">
       {!cart ? (
         <div className="padding_div">
           <BreadCrumb data={breadcrumbData} />
@@ -444,8 +444,11 @@ function ChackOut() {
             {/* <!-- Sub total --> */}
             <div className="md:w-1/3 sticky top-0 h-full md:mt-0 mt-6">
               <div className="rounded-lg bg-white dark:bg-gray-900 dark:text-gray-200 dark:shadow-sm dark:shadow-white p-5 shadow-md grid gap-2 ">
+                <h3 className="font-semibold text-xl mb-4 underline">
+                  Cart Details
+                </h3>
                 <div className="flex justify-between">
-                  <p className="text-lg font-bold">Subtotal</p>
+                  <p className="text-lg font-medium">Subtotal</p>
                   <p className="text-lg font-bold">$129.99</p>
                 </div>
                 <div className="flex justify-between">
@@ -462,45 +465,38 @@ function ChackOut() {
                 </div>
                 <hr className="my-4" />
                 <div className="flex flex-row justify-between">
-                  <p className="font-medium">Total</p>
+                  <p className="font-bold text-lg">Total</p>
                   <div className="">
                     <p className="mb-1 text-2xl font-bold">$134.98</p>
                     <p className="text-sm text-gray-500">including VAT</p>
                   </div>
                 </div>
-                {/* <Button
-                variant="gradient"
-                color="amber"
-                size="lg"
-                className="w-full my-3 rounded-full"
-                onClick={gotoCheckout}
-              >
-                Checkout
-              </Button> */}
               </div>
               {addressID && selectedAddress && (
                 <div className="rounded-lg bg-white dark:bg-gray-900 dark:text-gray-200 dark:shadow-sm dark:shadow-white p-5 shadow-md grid gap-2 mt-5 ">
-                  <h3 className="font-bold text-xl mb-4">Billing Address</h3>
-                  <div className="flex flex-row items-center justify-between">
-                    <p className="flex flex-row items-center font-bold">
+                  <h3 className="font-semibold text-xl mb-4 underline">
+                    Billing Address
+                  </h3>
+                  <div className="flex flex-row items-start justify-between">
+                    <p className="flex flex-row items-center font-semibold">
                       Address<span> :</span>
                     </p>
                     <p className="ml-3">{selectedAddress?.address}</p>
                   </div>
                   <div className="flex flex-row items-center justify-between">
-                    <p className="flex flex-row items-center font-bold">
+                    <p className="flex flex-row items-center font-semibold">
                       Email<span> :</span>
                     </p>
                     <p className="ml-3">{selectedAddress?.email}</p>
                   </div>
                   <div className="flex flex-row items-center justify-between">
-                    <p className="flex flex-row items-center font-bold">
+                    <p className="flex flex-row items-center font-semibold">
                       Name<span> :</span>
                     </p>
                     <p className="ml-3">{selectedAddress?.name}</p>
                   </div>
                   <div className="flex flex-row items-center justify-between">
-                    <p className="flex flex-row items-center font-bold">
+                    <p className="flex flex-row items-center font-semibold">
                       Contact Number<span>:</span>
                     </p>
                     <p className="ml-3">{selectedAddress?.phone}</p>
