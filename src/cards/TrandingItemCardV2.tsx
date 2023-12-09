@@ -17,11 +17,12 @@ interface TrandingItemCardProps {
   count?: number;
   starCount?: number;
   onAddToCart?: (id: string) => void;
+  onPressItem?: (id: string) => void;
 }
 
 function TrandingItemCardV2(props: TrandingItemCardProps) {
   const {
-    id = "",
+    id = "345",
     title,
     discount,
     currentPrice,
@@ -32,12 +33,17 @@ function TrandingItemCardV2(props: TrandingItemCardProps) {
     count = 0,
     starCount = 3,
     onAddToCart,
+    onPressItem,
   } = props;
 
   const [itemCount, setItemCount] = useState(count);
 
   return (
-    <div className="h-[98%] flex w-full bg-white dark:bg-gray-900 hover:dark:shadow-gray-800 hover:shadow-lg rounded-lg overflow-hidden cursor-pointer group transition-shadow duration-700 ease-in">
+    <div
+      className="h-[98%] flex w-full bg-white dark:bg-gray-900 hover:dark:shadow-gray-800 hover:shadow-lg rounded-lg overflow-hidden cursor-pointer group transition-shadow duration-700 ease-in"
+      key={id}
+      onClick={() => onPressItem && onPressItem(id)}
+    >
       <img
         className="w-[30%] h-auto bg-cover transition-transform duration-500 transform-gpu hover:scale-110 overflow-hidden"
         src={URL}

@@ -2794,7 +2794,7 @@ jsonify@^0.0.1:
   resolved "https://registry.yarnpkg.com/jsonify/-/jsonify-0.0.1.tgz#2aa3111dae3d34a0f151c63f3a45d995d9420978"
   integrity sha512-2/Ki0GcmuqSrgFyelQq9M05y7PS0mEwuIzrf3f1fPqkVDVRvZrPZtVSMHxdgo8Aq0sxAOb/cr2aqqA3LeWHVPg==
 
-keep-react@^1.0.1:
+keep-react@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/keep-react/-/keep-react-1.0.2.tgz#920c3855b44af874e037acf7e78a238bfc2ff46f"
   integrity sha512-0Gs7tyblvPzQ4vNpD0ZXPCuxI8YmHW/Y022NUE+jyKjrxc4dWGFYRyw2aihDTddcepzCiGXphby4SW0SgfP8kQ==

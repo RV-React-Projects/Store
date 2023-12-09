@@ -16,11 +16,12 @@ interface TrandingItemCardProps {
   URL?: string;
   count?: number;
   onAddToCart?: (id: string) => void;
+  onPressItem?: (id: string) => void;
 }
 
 function TrandingItemCard(props: TrandingItemCardProps) {
   const {
-    id = "",
+    id = "234",
     title,
     discount,
     currentPrice,
@@ -30,12 +31,17 @@ function TrandingItemCard(props: TrandingItemCardProps) {
     URL,
     count = 0,
     onAddToCart,
+    onPressItem,
   } = props;
 
   const [itemCount, setItemCount] = useState(count);
 
   return (
-    <div className="rounded-lg flex items-center lg:max-w-[100%] cursor-pointer group h-fit p-3 relative hover:shadow-gray-500 hover:shadow transition-all duration-700 ease-linear">
+    <div
+      className="rounded-lg flex items-center lg:max-w-[100%] cursor-pointer group h-fit p-3 relative hover:shadow-gray-500 hover:shadow transition-all duration-700 ease-linear"
+      key={id}
+      onClick={() => onPressItem && onPressItem(id)}
+    >
       <div className="relative self-center !overflow-hidden rounded-lg !min-w-[125px] group">
         <div className="cursor-pointer bg-white rounded-full absolute z-10 right-0 mt-2 mr-2 p-1 group-hover:-translate-x-1 lg:translate-x-14 duration-300 hover:bg-primary_color hover:text-white">
           <Tooltip content="WishList" placement="right">

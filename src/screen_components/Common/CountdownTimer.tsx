@@ -58,7 +58,7 @@ function CountdownTimer(props: CountdownTimerProps) {
   return (
     <div className="grid grid-flow-col gap-2 text-center auto-cols-max text-white items-center font-bold text-xl ">
       {days && days > 0 && (
-        <div className="flex flex-col p-2 rounded-lg text-gray-700 dark:text-gray-300 items-center w-12 capitalize bg-transparent border border-gray-700">
+        <div className="flex flex-col p-2 rounded-lg text-gray-700 dark:text-gray-300 items-center w-12 capitalize bg-transparent border-2 border-gray-700">
           <span className="countdown font-mono text-2xl">
             <span
               style={{ "--value": countdown?.days } as CSSProperties}
@@ -68,7 +68,7 @@ function CountdownTimer(props: CountdownTimerProps) {
       )}
       :
       {hours && hours > 0 && (
-        <div className="flex flex-col p-2 rounded-lg text-gray-700 dark:text-gray-300 items-center w-12 capitalize bg-transparent border border-gray-700">
+        <div className="flex flex-col p-2 rounded-lg text-gray-700 dark:text-gray-300 items-center w-12 capitalize bg-transparent border-2 border-gray-700">
           <span className="countdown font-mono text-2xl">
             <span
               style={{ "--value": countdown?.hours } as CSSProperties}
@@ -78,7 +78,7 @@ function CountdownTimer(props: CountdownTimerProps) {
       )}
       :
       {minutes && minutes > 0 && (
-        <div className="flex flex-col p-2 rounded-lg text-gray-700 dark:text-gray-300 items-center w-12 capitalize bg-transparent border border-gray-700">
+        <div className="flex flex-col p-2 rounded-lg text-gray-700 dark:text-gray-300 items-center w-12 capitalize bg-transparent border-2 border-gray-700">
           <span className="countdown font-mono text-2xl">
             <span
               style={{ "--value": countdown?.minutes } as CSSProperties}
@@ -88,7 +88,7 @@ function CountdownTimer(props: CountdownTimerProps) {
       )}
       :
       {seconds && seconds > 0 && (
-        <div className="flex flex-col p-2 rounded-lg text-gray-700 dark:text-gray-300 items-center w-12 capitalize bg-transparent border border-gray-700">
+        <div className="flex flex-col p-2 rounded-lg text-gray-700 dark:text-gray-300 items-center w-12 capitalize bg-transparent border-2 border-gray-700">
           <span className="countdown font-mono text-2xl">
             <span
               style={{ "--value": countdown?.seconds } as CSSProperties}

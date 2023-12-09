@@ -2,22 +2,28 @@ import SearchBar from "@src/screen_components/Home/SearchBar";
 import { useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import { CategoryData } from "@src/helpers/DataCategories";
-import { capitalize, map } from "lodash";
+import { capitalize, map, toString } from "lodash";
 import { DataTrandingItems } from "@src/helpers/DataTrandingItems";
 import ItemCard from "@src/cards/ItemCard";
 import ProductCategories from "@src/screen_components/Home/ProductCategories";
 import BreadCrumb from "@src/components/BreadrCrumbs/BreadCrumb";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import RangeSlider from "@src/components/Slider/RangeSlider";
 
 function Category() {
-  const [searchText, setSearchText] = useState<string>("");
   let { catType } = useParams<"catType">();
+
+  const [searchText, setSearchText] = useState<string>("");
+  const [state, setState] = useState<{ [key: string]: string[] }>({});
+  const navigate = useNavigate();
 
   // console.log(catType);
 
   const onPressSearch = () => {};
-  const [state, setState] = useState<{ [key: string]: string[] }>({});
+
+  const onPressItem = (id: string) => {
+    navigate(`/product/${!!id ?? "234"}`);
+  };
 
   const setOptions = (name: string, item: string) => {
     setState((prevState) => {
@@ -50,7 +56,7 @@ function Category() {
         <div className="padding_div">
           <div className="flex flex-row items-center flex-1 justify-between">
             {/* Left Section */}
-            <div className="flex-[0.20] overflow-y-auto self-start hidden lg:flex sticky top-0">
+            <div className="flex-[0.20] overflow-y-auto self-start hidden lg:flex sticky top-10">
               <div className="w-full select-none">
                 {CategoryData.map((category, index) => (
                   <div className="mb-5" key={index}>
@@ -88,12 +94,14 @@ function Category() {
                     <ItemCard
                       URL={item?.image}
                       key={index}
+                      id={toString(index)}
                       title={item.title}
                       discount={item.discount}
                       currentPrice={item?.currentPrice}
                       normalPrice={item?.normalPrice}
                       sold={item?.sold}
                       freeShipping={item?.freeShipping}
+                      onPressItem={onPressItem}
                     />
                   </div>
                 ))}

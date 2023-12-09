@@ -4,13 +4,19 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import times from "lodash/times";
 import { Tooltip } from "@mui/material";
 
-interface TrandingOfferProps {}
+interface TrandingOfferProps {
+  id?: string;
+  onPressItem?: (id: string) => void;
+}
 
 function TrandingOffer(props: TrandingOfferProps) {
-  const {} = props;
+  const { id = "", onPressItem } = props;
 
   return (
-    <div className="border border-gray-800 rounded-lg py-2 px-5 flex items-center max-w-[400px] cursor-pointer group w-[100%]">
+    <div
+      onClick={() => onPressItem && onPressItem(id)}
+      className="border border-gray-800 rounded-lg py-2 px-5 flex items-center max-w-[400px] cursor-pointer group w-[100%]"
+    >
       <div className="flex flex-col">
         <div className="mb-5 self-center">
           <p className="text-center font-medium text-xl mb-2 dark:text-gray-200">

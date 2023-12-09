@@ -17,6 +17,7 @@ import map from "lodash/map";
 import FloatingCart from "@src/components/Cart/FloatingCart";
 import { categoriesData } from "@src/screen_components/Home/SideBar";
 import Svgs from "@src/common/Svgs";
+import ThemeDropDownV2 from "../DropDown/ThemeDropDownV2";
 
 const SideBarNavList = [
   {
@@ -59,7 +60,7 @@ export default function Header() {
   };
 
   const toggleMainTheme = async (val: string) => {
-    console.log(val);
+    // console.log(val);
     const isSysDark = await window.matchMedia("(prefers-color-scheme: dark)")
       .matches;
     // console.log("sysTheme==>", isSysDark);
@@ -76,8 +77,6 @@ export default function Header() {
   };
 
   const switchTheme = () => {
-    console.log("ISDARK--> switch", isDarkMode);
-
     useStoreDispatch(toggleTheme(!isDarkMode));
   };
 
@@ -234,7 +233,7 @@ export default function Header() {
         <header className="padding_div hidden lg:block dark:shadow-gray-800">
           {/* ========== Top Options ========== */}
           <nav>
-            <>
+            {/* <>
               <div className="top_nav flex text-sm  justify-end text-center py-1 gap-5 font-medium ">
                 <Link to="/auth/signup" className="dark:text-gray-200">
                   SignUp
@@ -251,7 +250,7 @@ export default function Header() {
                 />
                 <ThemeDropDown onPressItem={toggleMainTheme} />
               </div>
-            </>
+            </> */}
             {/* ========== Top Navigation ============ */}
             <div className="w-full">
               <div className="flex items-end justify-between">
@@ -445,6 +444,10 @@ export default function Header() {
                   </div>
                 </div>
                 <div className="flex gap-5 items-end dark:text-gray-200">
+                  <CurrencyDropDown
+                    selected={currency}
+                    onPressItem={toggleCurrency}
+                  />
                   <NavLink to="/wishlist" className="relative">
                     <div className="h-5 w-5 rounded-full bg-primary absolute -top-3 -right-2 flex items-center justify-center text-sm text-white">
                       <span>5</span>
@@ -486,6 +489,7 @@ export default function Header() {
                       </div>
                     )}
                   </div>
+                  <ThemeDropDownV2 onPressItem={toggleMainTheme} />
                 </div>
               </div>
             </div>

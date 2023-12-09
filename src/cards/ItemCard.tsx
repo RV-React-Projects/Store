@@ -18,11 +18,12 @@ interface itemCardProps {
   count?: number;
   starCount?: number;
   onAddToCart?: (id: string) => void;
+  onPressItem?: (id: string) => void;
 }
 
 function ItemCard(props: itemCardProps) {
   const {
-    id = "",
+    id = "123",
     title,
     discount,
     currentPrice,
@@ -33,6 +34,7 @@ function ItemCard(props: itemCardProps) {
     count = 0,
     starCount = 3,
     onAddToCart,
+    onPressItem,
   } = props;
 
   const [itemCount, setItemCount] = useState(count);
@@ -41,6 +43,7 @@ function ItemCard(props: itemCardProps) {
     <div
       className="rounded-lg flex flex-col text-left lg:max-w-[100%] cursor-pointer h-full group lg:p-1 p-2 bg-inherit hover:shadow-xl hover:dark:shadow-gray-800 transition-all duration-700"
       key={id}
+      onClick={() => onPressItem && onPressItem(id)}
     >
       <div className="relative !overflow-hidden rounded-t-lg !min-w-[25%] group">
         <div className="cursor-pointer bg-white rounded-full absolute z-10 right-0 mt-2 mr-2 p-1 group-hover:-translate-x-1 lg:translate-x-14 duration-300 hover:bg-primary_color hover:text-white">
