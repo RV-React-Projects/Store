@@ -25,7 +25,7 @@ function HeaderTitle(props: HeaderTitleProps) {
     <div className="flex items-center justify-between pb-4 pt-1 border-b-[0.5px] mb-5 dark:border-[#333]">
       <div className="flex items-end">
         {showIcon && (
-          <div className="relative lg:w-10 lg:h-10 h-8 w-8  bg-[#e7efff] bg-opacity-80 rounded-full flex items-center justify-center mr-2">
+          <div className="relative lg:w-10 lg:h-10 h-8 w-8  bg-[#e7efffcc] bg-opacity-80 rounded-full flex items-center justify-center mr-2">
             <div className="lg:w-8 lg:h-8 h-6 w-6 bg-[#794afa] rounded-full bottom-5 right-5 opacity-40" />
           </div>
         )}

@@ -278,3 +278,32 @@ img.transparent-white {
   max-width: 100%;
   overflow: auto;
 }
+
+.cart-scrollbar::-webkit-scrollbar {
+  width: 2px;
+}
+
+.cart-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #4f46e5;
+  border-radius: 6px;
+  height: 10px;
+}
+
+.cart-scrollbar::-webkit-scrollbar-track {
+  background-color: #ffffff;
+}
+
+.header_container {
+  // width: 100%;
+  // padding: 1% 10%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 0.938em;
+}
+
+Link,
+NavLink {
+  font-family: "Rubix", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}

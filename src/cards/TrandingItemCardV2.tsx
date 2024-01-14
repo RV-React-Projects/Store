@@ -42,11 +42,12 @@ function TrandingItemCardV2(props: TrandingItemCardProps) {
     <div
       className="h-[98%] flex w-full bg-white dark:bg-gray-900 hover:dark:shadow-gray-800 hover:shadow-lg rounded-lg overflow-hidden cursor-pointer group transition-shadow duration-700 ease-in"
       key={id}
-      onClick={() => onPressItem && onPressItem(id)}
+      // onClick={() => onPressItem && onPressItem(id)}
     >
       <img
         className="w-[30%] h-auto bg-cover transition-transform duration-500 transform-gpu hover:scale-110 overflow-hidden"
         src={URL}
+        onClick={() => onPressItem && onPressItem(id)}
       />
       <div className="relative rounded-lg">
         <div className="cursor-pointer bg-white rounded-full absolute z-10 right-0 mt-2 mr-2 p-1 group-hover:-translate-x-1 lg:translate-x-14 duration-300 hover:bg-primary_color hover:text-white opacity-0 group-hover:opacity-100">
@@ -61,10 +62,13 @@ function TrandingItemCardV2(props: TrandingItemCardProps) {
         )}
       </div>
       <div className="w-2/3 pl-4 py-2 flex flex-col justify-between">
-        <h1 className="text-gray-900 font-semibold text-base hover:underline hover:text-primary dark:text-gray-400 line-clamp-1 md:line-clamp-2 h-6 md:h-12">
+        <h1
+          onClick={() => onPressItem && onPressItem(id)}
+          className="text-gray-900 font-semibold text-base hover:underline hover:text-primary dark:text-gray-400 line-clamp-1 md:line-clamp-2 h-6 md:h-12"
+        >
           {title}
         </h1>
-        <div>
+        <div onClick={() => onPressItem && onPressItem(id)}>
           <div className="flex item-center">
             {times(5, (index) => (
               <svg
@@ -87,7 +91,10 @@ function TrandingItemCardV2(props: TrandingItemCardProps) {
         </div>
 
         <div className="flex flex-row justify-between">
-          <h1 className="text-gray-800 font-semibold text-xl dark:text-gray-300">
+          <h1
+            onClick={() => onPressItem && onPressItem(id)}
+            className="text-gray-800 font-semibold text-xl dark:text-gray-300"
+          >
             ${currentPrice}
           </h1>
           {itemCount > 0 ? (

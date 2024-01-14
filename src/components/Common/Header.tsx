@@ -1,4 +1,3 @@
-import "@styles/_layout.styles.scss";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";

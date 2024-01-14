@@ -43,7 +43,6 @@ function ItemCard(props: itemCardProps) {
     <div
       className="rounded-lg flex flex-col text-left lg:max-w-[100%] cursor-pointer h-full group lg:p-1 p-2 bg-inherit hover:shadow-xl hover:dark:shadow-gray-800 transition-all duration-700"
       key={id}
-      onClick={() => onPressItem && onPressItem(id)}
     >
       <div className="relative !overflow-hidden rounded-t-lg !min-w-[25%] group">
         <div className="cursor-pointer bg-white rounded-full absolute z-10 right-0 mt-2 mr-2 p-1 group-hover:-translate-x-1 lg:translate-x-14 duration-300 hover:bg-primary_color hover:text-white">
@@ -55,6 +54,7 @@ function ItemCard(props: itemCardProps) {
           src={URL}
           alt="menu1"
           className="h-[360px] w-full self-center object-cover transition-transform duration-500 transform-gpu hover:scale-110 "
+          onClick={() => onPressItem && onPressItem(id)}
         />
         {discount && (
           <p className="p-1 absolute right-1 bottom-1 bg-gray-600 bg-opacity-70 rounded-full text-xs text-white">
@@ -63,10 +63,16 @@ function ItemCard(props: itemCardProps) {
         )}
       </div>
       <div className="mt-2 px-2">
-        <h5 className="font-medium text-base hover:underline hover:text-primary dark:text-gray-400 line-clamp-2 h-12">
+        <h5
+          onClick={() => onPressItem && onPressItem(id)}
+          className="font-medium text-base hover:underline hover:text-primary dark:text-gray-400 line-clamp-2 h-12"
+        >
           {title}
         </h5>
-        <div className="flex items-center my-2">
+        <div
+          onClick={() => onPressItem && onPressItem(id)}
+          className="flex items-center my-2"
+        >
           {times(5, (index) => (
             <svg
               key={index}
@@ -86,7 +92,10 @@ function ItemCard(props: itemCardProps) {
           </p>
         </div>
         <div className="flex flex-row group relative overflow-hidden justify-between">
-          <div className="items-end xl:gap-4 gap-2 xl:text-2xl lg:xl:text-xl sm:text-base md:text-lg mb-3">
+          <div
+            onClick={() => onPressItem && onPressItem(id)}
+            className="items-end xl:gap-4 gap-2 xl:text-2xl lg:xl:text-xl sm:text-base md:text-lg mb-3 w-full"
+          >
             <p className="text-secondary font-medium">${currentPrice}</p>
             <p className="line-through text-gray-500 dark:text-gray-600 text-base">
               ${normalPrice}
