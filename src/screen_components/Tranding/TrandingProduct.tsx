@@ -1,7 +1,7 @@
-import HeaderTitle from "@src/components/Headers/HeaderTitle";
+import HeaderTitle from "@components/Headers/HeaderTitle";
 import TrandingOffer from "@screen_components/Tranding/TrandingOffer";
 import { DataTrandingItems } from "@helpers/DataTrandingItems";
-import TrandingItemCardV2 from "@src/cards/TrandingItemCardV2";
+import TrandingItemCardV2 from "@cards/TrandingItemCardV2";
 import { useNavigate } from "react-router-dom";
 import toString from "lodash/toString";
 

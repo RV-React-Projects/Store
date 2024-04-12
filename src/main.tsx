@@ -7,7 +7,7 @@ import { RouterProvider } from "react-router-dom";
 import store from "@redux/store";
 import { ThemeProvider as MaterialTailwindThemeProvider } from "@material-tailwind/react";
 import Skeleton from "@mui/material/Skeleton";
-import { loadUserTheme } from "./redux/reducers/ThemeSlice";
+import { loadUserTheme } from "@reducers/ThemeSlice";
 
 store.dispatch(loadUserTheme());
 

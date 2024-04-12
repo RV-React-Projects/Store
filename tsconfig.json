@@ -28,7 +28,7 @@
       "@features/*": ["./src/services/features/*"],
       "@global/*": ["./src/services/global/*"],
       "@reducers/*": ["./src/redux/reducers/*"],
-      "@redux/*": ["./src/redux/*"]
+      "@redux/*": ["./src/redux/*"],
     },
 
     /* Bundler mode */
