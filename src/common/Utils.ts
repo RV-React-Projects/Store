@@ -303,4 +303,8 @@ const Utils = function (ErrorConstants: any) {
   };
 };
 
+export function openAuthModal() {
+  (document.getElementById("auth_modal") as HTMLDialogElement).showModal();
+}
+
 export default Utils(ErrorConstants);

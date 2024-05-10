@@ -34,10 +34,11 @@ const App = createBrowserRouter(
         <Route path="wishlist" element={<Checkout />} />
         <Route path="orders" element={<Checkout />} />
       </Route>
-      <Route path="auth">
+      {/* ====== Not in USE for Now ======== */}
+      {/* <Route path="auth">
         <Route index path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
-      </Route>
+      </Route> */}
     </Route>
   )
 );

@@ -1,22 +1,22 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import { useAppDispatch, useAppSelector } from "@src/redux/store";
-import { toggleTheme } from "@src/redux/reducers/ThemeSlice";
-import { setCurrency } from "@src/redux/reducers/HeaderSlice";
-import ThemeDropDown from "../DropDown/ThemeDropDown";
-import CurrencyDropDown from "../DropDown/CurrencyDropDown";
+import { useAppDispatch, useAppSelector } from "@redux/store";
+import { toggleTheme } from "@reducers/ThemeSlice";
+import { setCurrency } from "@reducers/HeaderSlice";
+import CurrencyDropDown from "@components/DropDown/CurrencyDropDown";
 import Headroom from "react-headroom";
-import MainLogo from "@src/screen_components/Header/MainLogo";
+import MainLogo from "@screen_components/Header/MainLogo";
 import { Fragment, useState } from "react";
 import { Popover, Transition } from "@headlessui/react";
-import { navigationData } from "@src/screen_components/Header/HeaderCategory";
+import { navigationData } from "@screen_components/Header/HeaderCategory";
 import toLower from "lodash/toLower";
 import map from "lodash/map";
-import FloatingCart from "@src/components/Cart/FloatingCart";
-import { categoriesData } from "@src/screen_components/Home/SideBar";
-import Svgs from "@src/common/Svgs";
-import ThemeDropDownV2 from "../DropDown/ThemeDropDownV2";
+import FloatingCart from "@components/Cart/FloatingCart";
+import { categoriesData } from "@screen_components/Home/SideBar";
+import Svgs from "@common/Svgs";
+import ThemeDropDownV2 from "@components/DropDown/ThemeDropDownV2";
+import { openAuthModal } from "@common/Utils";
 
 const SideBarNavList = [
   {
@@ -46,6 +46,7 @@ export default function Header() {
   const navigate = useNavigate();
   const { currency } = useAppSelector((state) => state.header);
   const { isDarkMode } = useAppSelector((state) => state.theme);
+  const { isUserLoggedIn } = useAppSelector((state) => state.user);
 
   const [openPopover, setOpenPopover] = useState(null);
   const [showCart, setShowCart] = useState<boolean>(false);
@@ -447,7 +448,11 @@ export default function Header() {
                     selected={currency}
                     onPressItem={toggleCurrency}
                   />
-                  <NavLink to="/wishlist" className="relative">
+                  <NavLink
+                    to={isUserLoggedIn ? "/wishlist" : "#"}
+                    onClick={() => !isUserLoggedIn && openAuthModal()}
+                    className="relative"
+                  >
                     <div className="h-5 w-5 rounded-full bg-primary absolute -top-3 -right-2 flex items-center justify-center text-sm text-white">
                       <span>5</span>
                     </div>
@@ -455,12 +460,16 @@ export default function Header() {
                   </NavLink>
                   <div className="group relative">
                     <NavLink
-                      to="/cart"
+                      to={isUserLoggedIn ? "/cart" : "#"}
                       end
                       className="flex relative items-end"
-                      onMouseEnter={() => setShowCart(true)}
+                      onMouseEnter={() => isUserLoggedIn && setShowCart(true)}
                       onMouseLeave={() => setShowCart(false)}
-                      onClick={() => setShowCart(!showCart)}
+                      onClick={() =>
+                        isUserLoggedIn
+                          ? setShowCart(!showCart)
+                          : openAuthModal()
+                      }
                     >
                       <div className="relative">
                         <div className="h-5 w-5 rounded-full bg-primary absolute -top-3 -right-2 flex items-center justify-center text-sm text-white">

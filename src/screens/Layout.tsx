@@ -1,6 +1,7 @@
 import { lazy, memo, useLayoutEffect } from "react";
 import { useAppSelector } from "@redux/store";
 import { Outlet, useLocation } from "react-router-dom";
+import Auth from "./Auth/Auth";
 
 const Header = lazy(() => import("@components/Common/Header"));
 const Footer = lazy(() => import("@components/Common/Footer"));
@@ -25,6 +26,7 @@ function Layout() {
   return (
     <>
       {!hideHeaderFooter && <Header />}
+      <Auth />
       <div className="min-h-screen">
         <Outlet />
       </div>
